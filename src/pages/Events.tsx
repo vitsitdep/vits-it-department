@@ -64,6 +64,12 @@ const events: EventsData = {
     ],
     past: [
         {
+            title: 'Attending SecConf July 2025',
+            date: 'July 19, 2025',
+            description: 'Attending SecConf July 2025, a premier conference on security and technology.',
+            images: ['/191.jpeg', '/192.jpeg', '/193.jpeg', '/194.jpeg'],
+        },
+        {
             title: 'Visit to Tech Mahindra',
             date: 'July 12, 2025',
             description: 'A visit to Tech Mahindra to explore industry practices and innovations.',
