@@ -26,27 +26,7 @@ interface EventsData {
 
 const events: EventsData = {
     upcoming: [
-        {
-            title: 'Mastering Academic Writing: A Comprehensive Guide to LaTeX',
-            date: '18th & 19th July 2025',
-            type: '2-Day Hands on Workshop',
-            participants:'IV Year Students',
-            organisedby: 'In House Faculty (M S B Kasyapa)',
-        },
-         {
-            title: 'Programming Essentials in Python & Django',
-            date: '28th July to 1st August, 2025',
-            type: '5 - Day Workshop',
-            participants: 'II Year Students',
-            organisedby: 'TASK',
-        },
-        {
-            title: 'Zero to Live: Website Creation and Deployment',
-            date: '28th - 30th July 2025',
-            type: '3- Day Hands on Workshop',
-            participants: 'III Year Students',
-            organisedby: 'In House Students',
-        },
+        
         {
             title: 'Cloud Computing	',
             date: '4th - 6th August, 2025',
