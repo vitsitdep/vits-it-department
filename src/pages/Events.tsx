@@ -44,6 +44,12 @@ const events: EventsData = {
     ],
     past: [
         {
+            title: 'Being part of blood donation camp at VITS',
+            date: 'July 19, 2025',
+            description: 'Participating in a blood donation camp organized at VITS.',
+            images: ['/bd1.jpeg', '/bd2.jpeg', '/bd3.jpeg', '/bd4.jpeg', '/bd5.jpeg', '/bd6.jpeg', '/bd7.jpeg'],
+        },
+        {
             title: 'Attending SecConf July 2025',
             date: 'July 19, 2025',
             description: 'Attending SecConf July 2025, a premier conference on security and technology.',
