@@ -9,9 +9,7 @@ const Index = () => {
 
   //Events 
   const events = [
-    
-    "Cloud Computing (4th - 6th August, 2025)",
-    "Zero to Live: Website Creation and Deployment (11th - 13th August 2025)",
+    "Zero to Live: Website Creation and Deployment (18th - 21st August 2025)",
   ];
 
   return (
