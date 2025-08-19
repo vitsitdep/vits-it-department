@@ -114,18 +114,6 @@ const Faculty = () => {
       image: "/msb.jpeg"
     },
     {
-      id: 9,
-      name: "Mr. G. Ramakrishna",
-      position: "Assistant Professor",
-      qualification: "M.Tech in Information Technology",
-      experience: "5 years of teaching experience",
-      specialization: "Web Development, UI/UX Design",
-      email: "kavita.sharma@vits.ac.in",
-      publications: 5,
-      awards: "Best Educator Award 2021",
-      image: "/gr.jpeg"
-    },
-    {
       id: 10,
       name: "Mrs. Ch. Sai Vijaya",
       position: "Assistant Professor",
