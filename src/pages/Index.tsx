@@ -9,7 +9,7 @@ const Index = () => {
 
   //Events 
   const events = [
-    "AlgoArambh ( Upcoming )",
+    "AlgoArambh - Algorand Blockchain Event"
   ];
 
   return (
