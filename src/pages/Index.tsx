@@ -9,7 +9,7 @@ const Index = () => {
 
   //Events 
   const events = [
-    "Zero to Live: Website Creation and Deployment (18th - 21st August 2025)",
+    "AlgoArambh ( Upcoming )",
   ];
 
   return (
