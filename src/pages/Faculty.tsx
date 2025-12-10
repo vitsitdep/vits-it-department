@@ -19,12 +19,12 @@ const Faculty = () => {
       name: "Prof. B.V. Chowdary  ",
       position: "Head of Department",
       subDesignation: " Associate Professor",
-      qualification: "Ph.D.",
-      experience: "15+ years of teaching and research experience",
+      qualification: "M.tech, (Ph.D.)",
+      experience: "17 years of teaching experience",
       specialization: "Data Mining, Machine Learning",
-      email: "",
+      email: "bvchowdary2003@gmail.com",
       publications: 24,
-      awards: "Best Researcher Award 2022",
+      awards: "Yuva Acharya Award - 2021",
       image: "/BV-IT-HOD.jpg"
     },
     {
