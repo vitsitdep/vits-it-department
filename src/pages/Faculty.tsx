@@ -23,7 +23,7 @@ const Faculty = () => {
       experience: "17 years of teaching experience",
       specialization: "Data Mining, Machine Learning",
       email: "bvchowdary2003@gmail.com",
-      publications: 24,
+      publications: "Scopus Journal & Conference: 33 \n Patents:2",
       awards: "Yuva Acharya Award - 2021",
       image: "/BV-IT-HOD.jpg"
     },
