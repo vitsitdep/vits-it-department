@@ -75,7 +75,7 @@ const Faculty = () => {
       experience: "12 years of teaching experience",
       specialization: "Machine Learning, Deep Learning",
       email: "khaleel1245@gmail.com",
-      publications: "Journal & Conference: 12 \nScopus Journals: 4 \nBook chapter: 1 ",
+      publications: "Scopus Journal & Conference: 16\nBook chapter: 1 ",
       awards: "",
       image: "/public/sk1.png"
     },
