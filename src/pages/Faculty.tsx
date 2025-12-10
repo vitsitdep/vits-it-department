@@ -38,7 +38,7 @@ const Faculty = () => {
       email: "marryprabhakar@gmail.com",
       publications: "Scopus Conference: 28 \n Patents:2 \n Book: 1 ",
       awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
-      image: "/pp.jpeg"
+      image: "/public/pp.png"
     },
     {
       id: 3,
