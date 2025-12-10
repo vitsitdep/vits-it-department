@@ -47,7 +47,7 @@ const Faculty = () => {
       subDesignation: "IP Project Coordinator",
       qualification: "M.Tech, Ph.D.",
       experience: "18 years of teaching experience",
-      specialization: "Machine Learning",
+      specialization: "Big Data, Machine Learning",
       email: "naveen.basava@gmail.com",
       publications: "Scopus Journal & Conference: 9 \n Books: 4 \n Patents: 5\n \n SCI/SCIE: 1\n",
       awards: "",
