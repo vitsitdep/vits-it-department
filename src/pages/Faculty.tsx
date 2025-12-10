@@ -18,6 +18,7 @@ const Faculty = () => {
       id: 1,
       name: "Prof. B.V. Chowdary  ",
       position: "Head of Department",
+      subDesignation: "Professor",
       qualification: "Ph.D. in Computer Science Engineering",
       experience: "15+ years of teaching and research experience",
       specialization: "Data Mining, Machine Learning",
@@ -30,6 +31,7 @@ const Faculty = () => {
       id: 2,
       name: "Dr. M. Prabhakar",
       position: "Associate Professor",
+      subDesignation: "R&D Coordinator",
       qualification: "M.Tech, Ph.D.",
       experience: "17 years of teaching experience",
       specialization: "Data Mining, Machine Learning",
@@ -42,6 +44,7 @@ const Faculty = () => {
       id: 3,
       name: "Dr. B. Naveen Kumar",
       position: "Associate Professor",
+      subDesignation: "IP Project Coordinator",
       qualification: "M.Tech, Ph.D.",
       experience: "15 years of teaching experience",
       specialization: "Machine Learning",
@@ -54,6 +57,7 @@ const Faculty = () => {
       id: 12,
       name: "K. Shiva Rama Krishna",
       position: "Associate Professor",
+      subDesignation: "Skill Enhancement Coordinator",
       qualification: "M.Tech in Computer Science",
       experience: "8 years of teaching and 4 years of industry experience",
       specialization: "Computer Networks, Cloud Computing",
@@ -66,6 +70,7 @@ const Faculty = () => {
       id: 4,
       name: "Mr. Sk. Khaleelullah",
       position: "Assistant Professor",
+      subDesignation: "Placement Coordinator",
       qualification: "M.Tech, Ph.D. (Pursuing)",
       experience: "12 years of teaching experience",
       specialization: "Machine Learning, Deep Learning",
@@ -78,6 +83,7 @@ const Faculty = () => {
       id: 5,
       name: "Mrs. T. Aruna",
       position: "Assistant Professor",
+      subDesignation: "Certifications Coordinator",
       qualification: "Ph.D. in Information Security",
       experience: "7 years of teaching and research experience",
       specialization: "Cybersecurity, Cryptography",
@@ -90,6 +96,7 @@ const Faculty = () => {
       id: 6,
       name: "Mr. J. Srikanth",
       position: "Assistant Professor",
+      subDesignation: "Student Coordinator",
       qualification: "M.Tech in Software Engineering",
       experience: "6 years of teaching and 3 years of industry experience",
       specialization: "Mobile Application Development, IoT",
@@ -102,6 +109,7 @@ const Faculty = () => {
       id: 7,
       name: "Mr. A. Sankar Reddy",
       position: "Assistant Professor",
+      subDesignation: "Club Activities Coordinator",
       qualification: "Ph.D. in Artificial Intelligence",
       experience: "10 years of teaching and 5 years of research experience",
       specialization: "Artificial Intelligence, Natural Language Processing",
@@ -114,6 +122,7 @@ const Faculty = () => {
       id: 8,
       name: "Mr. M.S.B Kasyapa",
       position: "Assistant Professor",
+      subDesignation: "IIC Coordinator",
       qualification: "M.tech, Ph.D.(Pursuing)",
       experience: "8 years of teaching experience",
       specialization: "Blockchain Technology, Data Science",
@@ -126,6 +135,7 @@ const Faculty = () => {
       id: 10,
       name: "Mrs. Ch. Sai Vijaya",
       position: "Assistant Professor",
+      subDesignation: "NPTEL Coordinator",
       qualification: "M.Tech in Software Systems",
       experience: "4 years of teaching and 2 years of industry experience",
       specialization: "Software Development, Agile Methodologies",
@@ -138,6 +148,7 @@ const Faculty = () => {
       id: 11,
       name: "Mr. G. Chanakya",
       position: "Assistant Professor",
+      subDesignation: "Academic Coordinator",
       qualification: "M.Tech in Artificial Intelligence",
       experience: "5 years of teaching and 2 years of research experience",
       specialization: "Deep Learning, Computer Vision",
@@ -284,6 +295,9 @@ const Faculty = () => {
                       <div>
                         <h3 className="font-semibold text-lg font-heading">{faculty.name}</h3>
                         <p className={`${index % 2 === 0 ? 'text-department-blue' : 'text-department-purple'} font-medium`}>{faculty.position}</p>
+                        {faculty.subDesignation && (
+                          <p className="text-sm text-gray-600">{faculty.subDesignation}</p>
+                        )}
                       </div>
                     </div>
                   </CardContent>
