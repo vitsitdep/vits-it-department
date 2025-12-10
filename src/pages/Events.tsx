@@ -39,7 +39,7 @@ const events: EventsData = {
     past: [
         {
             title: 'Zero to Live: Website Creation and Deployment for II and III Year Students',
-            date: '18th - 21st August 2025, July 28 to July 30, 2025',
+            date: '18th - 21st August 2025 and July 28 to July 30, 2025',
             description: 'A hands-on workshop for III Year students to learn website creation and deployment.',
             images: ['/w31.jpeg', '/w32.jpeg', '/w33.jpeg', '/w34.jpeg', '/w35.jpeg'],
         },
