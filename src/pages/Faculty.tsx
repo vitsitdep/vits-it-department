@@ -99,7 +99,7 @@ const Faculty = () => {
       email: "anjali.mehta@vits.ac.in",
       publications: 20,
       awards: "AI Research Excellence Award 2023",
-      image: "/asr.jpg"
+      image: "/public/asr.png"
     },
     {
       id: 8,
