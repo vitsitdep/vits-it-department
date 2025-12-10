@@ -51,7 +51,7 @@ const Faculty = () => {
       email: "rajesh.kumar@vits.ac.in",
       publications: 12,
       awards: "Young Scientist Award 2020",
-      image: "/srk.jpeg"
+      image: "public/srk.jpeg"
     },
     {
       id: 4,
