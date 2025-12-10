@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 
 const Faculty = () => {
+  const [selectedFaculty, setSelectedFaculty] = useState<any>(null);
   const facultyMembers = [
     {
       id: 1,
@@ -21,24 +30,24 @@ const Faculty = () => {
       id: 2,
       name: "Dr. M. Prabhakar",
       position: "Associate Professor",
-      qualification: "Ph.D.",
-      experience: "12 years of teaching experience",
-      specialization: "Database Management Systems, Data Mining",
-      email: "meena.gupta@vits.ac.in",
-      publications: 15,
-      awards: "Excellence in Teaching 2021",
+      qualification: "M.Tech, Ph.D.",
+      experience: "17 years of teaching experience",
+      specialization: "Data Mining, Machine Learning",
+      email: "marryprabhakar@gmail.com",
+      publications: "Scopus Conference: 28 \n Patents:2 \n Book: 1 ",
+      awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
       image: "/pp.jpeg"
     },
     {
       id: 3,
       name: "Dr. B. Naveen Kumar",
       position: "Associate Professor",
-      qualification: "Ph.D.",
-      experience: "8 years of teaching and 4 years of industry experience",
-      specialization: "Computer Networks, Cloud Computing",
-      email: "rajesh.kumar@vits.ac.in",
-      publications: 12,
-      awards: "Young Scientist Award 2020",
+      qualification: "M.Tech, Ph.D.",
+      experience: "15 years of teaching experience",
+      specialization: "Machine Learning",
+      email: "naveen.basava@gmail.com",
+      publications: "Scopus Conference: 9 \n Books: 4 \n \n Patents: 2\n SCI/SCIE: 1\n",
+      awards: "",
       image: "/nk.jpeg"
     },
     {
@@ -57,12 +66,12 @@ const Faculty = () => {
       id: 4,
       name: "Mr. Sk. Khaleelullah",
       position: "Assistant Professor",
-      qualification: "M.Tech in Computer Science",
-      experience: "9 years of teaching experience",
-      specialization: "Web Technologies, Software Engineering",
-      email: "sanjay.verma@vits.ac.in",
-      publications: 8,
-      awards: "Best Project Mentor 2023",
+      qualification: "M.Tech, Ph.D. (Pursuing)",
+      experience: "12 years of teaching experience",
+      specialization: "Machine Learning, Deep Learning",
+      email: "khaleel1245@gmail.com",
+      publications: "Scopus Conference: 12 \nScopus Journals: 4 \nBook chapter: 1 \n SCI/SCIE: 0\n\n Web of Science: 0",
+      awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
       image: "/public/sk.jpeg"
     },
     {
@@ -105,12 +114,12 @@ const Faculty = () => {
       id: 8,
       name: "Mr. M.S.B Kasyapa",
       position: "Assistant Professor",
-      qualification: "Ph.D. in Data Science",
+      qualification: "M.tech, Ph.D.(Pursuing)",
       experience: "8 years of teaching experience",
-      specialization: "Big Data Analytics, Predictive Modeling",
-      email: "rajiv.menon@vits.ac.in",
-      publications: 14,
-      awards: "Data Science Innovator Award 2022",
+      specialization: "Blockchain Technology, Data Science",
+      email: "msbkasyapa@gmail.com",
+      publications: "SCI: 2 \n Scopus Conference: 2\n Book Chapter:1",
+      awards: "",
       image: "/msb.jpeg"
     },
     {
@@ -133,8 +142,8 @@ const Faculty = () => {
       experience: "5 years of teaching and 2 years of research experience",
       specialization: "Deep Learning, Computer Vision",
       email: "chanakya.g@vits.ac.in",
-      publications: 10,
-      awards: "AI Educator Award 2024",
+      publications: "Scopus Conference: 6 \n Patent: 1 \n Book Chapter: 1",
+      awards: "",
       image: "/chan.jpeg"
     },
   ];
@@ -210,6 +219,31 @@ const Faculty = () => {
     );
   };
 
+  // Parse publications which can be a number or a descriptive string like "scopus:12 linea:2"
+  const parsePublications = (pub) => {
+    if (pub === null || pub === undefined) return [];
+    // If it's already a number, return a single total entry
+    if (typeof pub === 'number') return [{ source: 'Total', count: pub }];
+
+    // Normalize separators: newlines, commas or semicolons
+    const parts = String(pub).split(/\n|,|;/).map(s => s.trim()).filter(Boolean);
+    const items = parts.map(part => {
+      // Try to capture patterns like "scopus:12" or "Scopus Conference: 12"
+      const m = part.match(/^\s*([^:\d]+?)[:\-\s]*([0-9]+)\s*$/i);
+      if (m) {
+        return { source: m[1].trim(), count: Number(m[2]) };
+      }
+      // Try another pattern: words then number at end
+      const m2 = part.match(/^(.*?)(\d+)$/);
+      if (m2) return { source: m2[1].trim().replace(/[:\-]$/,''), count: Number(m2[2]) };
+      // Fallback: return the raw part as source with no count
+      return { source: part, count: null };
+    });
+    // If parsing produced nothing meaningful, but the whole string is a number, handle it
+    if (items.length === 0 && !Number.isNaN(Number(pub))) return [{ source: 'Total', count: Number(pub) }];
+    return items;
+  };
+
   return (
       <Layout>
         <section className="bg-gradient-to-r from-department-purple/10 to-department-blue/10 py-12">
@@ -229,12 +263,16 @@ const Faculty = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facultyMembers.map((faculty, index) => (
-                <Card key={faculty.id} className="overflow-hidden shadow-md card-hover-effect">
+                <Card
+                    key={faculty.id}
+                    className="overflow-hidden shadow-md card-hover-effect cursor-pointer transition-transform hover:scale-105"
+                    onClick={() => setSelectedFaculty(faculty)}
+                >
                   <CardContent className="p-0">
                     <div className={`bg-gradient-to-r ${index % 2 === 0 ? 'from-department-blue/5 to-department-blue/10' : 'from-department-purple/5 to-department-purple/10'} p-6 flex items-center gap-4`}>
                       <Avatar className="h-20 w-20 border-2 border-white shadow-md">
                         {faculty.image ? (
-                            <img src={faculty.image} className="h-full w-full object-cover rounded-full" alt={faculty.name} />
+                            <img src={faculty.image} className="h-full w-full object-cover object-top rounded-full" alt={faculty.name} />
                         ) : (
                             <AvatarFallback className={`${index % 2 === 0 ? 'bg-department-blue' : 'bg-department-purple'} text-white text-xl font-bold`}>
                               {faculty.name.split(' ').length > 1
@@ -264,6 +302,104 @@ const Faculty = () => {
             </div>
           </div>
         </section>
+
+        <Dialog open={!!selectedFaculty} onOpenChange={() => setSelectedFaculty(null)}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            {selectedFaculty && (
+                <>
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl">{selectedFaculty.name}</DialogTitle>
+                    <DialogDescription className="text-base mt-2">
+                      {selectedFaculty.position}
+                    </DialogDescription>
+                  </DialogHeader>
+                  
+                  <div className="mt-6 space-y-6">
+                    <div className="flex gap-6 items-start">
+                      <Avatar className="h-32 w-32 border-2 border-department-blue shadow-md flex-shrink-0">
+                        {selectedFaculty.image ? (
+                            <img src={selectedFaculty.image} className="h-full w-full object-cover object-top rounded-full" alt={selectedFaculty.name} />
+                        ) : (
+                            <AvatarFallback className="bg-department-blue text-white text-3xl font-bold">
+                              {selectedFaculty.name.split(' ').length > 1
+                                  ? selectedFaculty.name.split(' ')[0][0] + selectedFaculty.name.split(' ')[1][0]
+                                  : selectedFaculty.name.slice(0, 2).toUpperCase()}
+                            </AvatarFallback>
+                        )}
+                      </Avatar>
+                      
+                      <div className="flex-1 space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-600 uppercase">Position</h4>
+                          <p className="text-lg text-department-blue font-medium">{selectedFaculty.position}</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-600 uppercase">Qualification</h4>
+                          <p className="text-gray-700">{selectedFaculty.qualification}</p>
+                        </div>
+                        
+                        {selectedFaculty.email && (
+                            <div>
+                              <h4 className="text-sm font-semibold text-gray-600 uppercase">Email</h4>
+                              <p className="text-gray-700 break-all">{selectedFaculty.email}</p>
+                            </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gray-600 uppercase mb-2">Experience</h4>
+                        <p className="text-gray-700">{selectedFaculty.experience}</p>
+                      </div>
+                      
+                      <div className="bg-purple-50 p-4 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gray-600 uppercase mb-2">Specialization</h4>
+                        <p className="text-gray-700">{selectedFaculty.specialization}</p>
+                      </div>
+                    </div>
+
+                    <div className={`grid ${selectedFaculty.awards && String(selectedFaculty.awards).trim() ? 'grid-cols-2' : 'grid-cols-1'} gap-4`}>
+                      <div className="bg-green-50 p-4 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gray-600 uppercase mb-2">Publications</h4>
+                        <div className="flex flex-col gap-2">
+                          {parsePublications(selectedFaculty.publications).map((it, i) => {
+                            const key = `${it.source}-${i}`;
+                            const lc = (it.source || '').toLowerCase();
+                            let color = 'bg-green-600';
+                            if (lc.includes('scopus')) color = 'bg-indigo-600';
+                            else if (lc.includes('web') || lc.includes('science') || lc.includes('wos')) color = 'bg-yellow-600';
+                            else if (lc.includes('journal')) color = 'bg-emerald-600';
+                            else if (lc.includes('conference')) color = 'bg-sky-600';
+                            else if (lc.includes('book')) color = 'bg-fuchsia-600';
+
+                            return (
+                              <div key={key} className="flex items-center gap-3">
+                                <Badge className={`${color} text-white text-sm px-2 py-1 rounded-md`}>
+                                  <span className="font-semibold">{it.count ?? '-'}</span>
+                                </Badge>
+                                <div className="text-sm text-gray-700">
+                                  {it.source}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {selectedFaculty.awards && String(selectedFaculty.awards).trim() && (
+                        <div className="bg-orange-50 p-4 rounded-lg">
+                          <h4 className="text-sm font-semibold text-gray-600 uppercase mb-2">Awards</h4>
+                          <Badge className="bg-orange-600 text-white">{selectedFaculty.awards}</Badge>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </>
+            )}
+          </DialogContent>
+        </Dialog>
       </Layout>
   );
 };
