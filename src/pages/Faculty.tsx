@@ -77,7 +77,7 @@ const Faculty = () => {
       email: "khaleel1245@gmail.com",
       publications: "Journal & Conference: 12 \nScopus Journals: 4 \nBook chapter: 1 ",
       awards: "",
-      image: "/public/sk.jpeg"
+      image: "/public/sk1.png"
     },
     {
       id: 5,
