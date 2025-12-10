@@ -87,7 +87,7 @@ const Faculty = () => {
       email: "amit.kumar@vits.ac.in",
       publications: 6,
       awards: "Innovation Award 2021",
-      image: "/srik.jpeg"
+      image: "public/srik.jpeg"
     },
     {
       id: 7,
