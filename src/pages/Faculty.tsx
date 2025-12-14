@@ -110,12 +110,12 @@ const Faculty = () => {
       name: "Mr. A. Sankar Reddy",
       position: "Assistant Professor",
       subDesignation: "Club Activities Coordinator",
-      qualification: "Ph.D. in Artificial Intelligence",
-      experience: "10 years of teaching and 5 years of research experience",
-      specialization: "Artificial Intelligence, Natural Language Processing",
-      email: "anjali.mehta@vits.ac.in",
-      publications: 20,
-      awards: "AI Research Excellence Award 2023",
+      qualification: " M.Tech, Ph.D.(Pursuing)",
+      experience: "11 years of teaching experience",
+      specialization: "Artificial Intelligence, Deep Learning",
+      email: "akepatisankar@gmail.com",
+      publications: " Scopus/UGC Journal & Conference: 13 \n Patents: 1 ",
+      awards: "",
       image: "/public/asr.png"
     },
     {
