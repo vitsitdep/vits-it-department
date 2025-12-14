@@ -23,7 +23,7 @@ const Faculty = () => {
       experience: "17 years of teaching experience",
       specialization: "Data Mining, Machine Learning",
       email: "bvchowdary2003@gmail.com",
-      publications: "Scopus Journal & Conference: 33 \n Patents:2",
+      publications: "Scopus Journals & Conferences: 33 \n Patents:2",
       awards: "Yuva Acharya Award - 2021",
       image: "/BV-IT-HOD.jpg"
     },
@@ -36,7 +36,7 @@ const Faculty = () => {
       experience: "17 years of teaching experience",
       specialization: "Data Mining, Machine Learning",
       email: "marryprabhakar@gmail.com",
-      publications: "Scopus Journal & Conference: 28 \n Patents:2 \n Book: 1 ",
+      publications: "Scopus Journals & Conferences: 28 \n Patents:2 \n Book: 1 ",
       awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
       image: "/public/pp.png"
     },
@@ -49,7 +49,7 @@ const Faculty = () => {
       experience: "18 years of teaching experience",
       specialization: "Big Data, Machine Learning",
       email: "naveen.basava@gmail.com",
-      publications: "Scopus Journal & Conference: 9 \n Books: 4 \n Patents: 5\n \n SCI/SCIE: 1\n",
+      publications: "Scopus Journals & Conferences: 9 \n Books: 4 \n Patents: 5\n \n SCI/SCIE: 1\n",
       awards: "",
       image: "/nk.jpeg"
     },
@@ -62,7 +62,7 @@ const Faculty = () => {
       experience: "18 years of teaching experience",
       specialization: "Computer Networks, Cloud Computing",
       email: "shivaram1p@gmail.com",
-      publications: "Journal & Conference: 7 \n Patent: 2",
+      publications: "Journals & Conferences: 7 \n Patent: 2",
       awards: "",
       image: "public/srk.jpeg"
     },
@@ -75,7 +75,7 @@ const Faculty = () => {
       experience: "12 years of teaching experience",
       specialization: "Machine Learning, Deep Learning",
       email: "khaleel1245@gmail.com",
-      publications: "Scopus Journal & Conference: 16\nBook chapter: 1 ",
+      publications: "Scopus Journals & Conferences: 16\nBook chapter: 1 ",
       awards: "",
       image: "/public/sk1.png"
     },
@@ -88,7 +88,7 @@ const Faculty = () => {
       experience: "15 years of teaching experience",
       specialization: "Machine Learning, Data Science",
       email: "arunasrinivas35@gmail.com",
-      publications: "Conference:6\n Patents:1 \n Journal: 2",
+      publications: "Conferences:6\n Patents:1 \n Journal: 2",
       awards: "",
       image: "/ta.jpeg"
     },
@@ -114,7 +114,7 @@ const Faculty = () => {
       experience: "11 years of teaching experience",
       specialization: "Artificial Intelligence, Deep Learning",
       email: "akepatisankar@gmail.com",
-      publications: " Scopus/UGC Journal & Conference: 13 \n Patents: 1 ",
+      publications: " Scopus/UGC Journals & Conferences: 13 \n Patents: 1 ",
       awards: "",
       image: "/public/asr.png"
     },
@@ -127,7 +127,7 @@ const Faculty = () => {
       experience: "8 years of teaching experience",
       specialization: "Blockchain Technology, Data Science",
       email: "msbkasyapa@gmail.com",
-      publications: "SCI: 2 \n Scopus Conference: 2\n Book Chapter:1",
+      publications: "SCI: 2 \n Scopus Conferences: 2\n Book Chapter:1",
       awards: "",
       image: "/msb.jpeg"
     },
@@ -140,7 +140,7 @@ const Faculty = () => {
       experience: "6 years of teaching experience",
       specialization: "Machine Learning",
       email: "aimlbsesai@gmail.com",
-      publications: "Scopus Journal & Conference: 2",
+      publications: "Scopus Journals & Conferences: 2",
       awards: "",
       image: "/public/vijaya.jpeg"
     },
@@ -153,7 +153,7 @@ const Faculty = () => {
       experience: "6 years of teaching experience",
       specialization: "Machine Learning, Artificial Intelligence",
       email: "chanakyaa@vignanits.ac.in",
-      publications: "Scopus Conference: 7 \n Patent: 1 \n Book Chapter: 1",
+      publications: "Scopus Conferences: 7 \n Patent: 1 \n Book Chapter: 1",
       awards: "",
       image: "/public/chan.png"
     },
