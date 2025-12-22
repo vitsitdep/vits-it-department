@@ -91,6 +91,42 @@ const studentAchievements = [
     academicYear: "2023-24",
     count: "09",
   },
+  {
+    studentName:
+        "B. Pavan Babu(22891A1207)",
+    issuedBy: "Logical Media (1.24 LPA)",
+    topic: "Internship",
+    date: "August-December 2025",
+    academicYear: "2024-25",
+    count: "01",
+  },
+  {
+    studentName:
+        "B. Rohith Reddy(22891A1209)",
+    issuedBy: "Compose Tech (1.5 L for 3 months)",
+    topic: "Internship",
+    date: "August-November 2025",
+    academicYear: "2024-25",
+    count: "01",
+  },
+  {
+    studentName:
+        "M. Sai Rithika(22891A1232)",
+    issuedBy: "DRDO(30K for 6 months)",
+    topic: "Internship",
+    date: "September 2025- February 2026",
+    academicYear: "2024-25",
+    count: "01",
+  },
+  {
+    studentName:
+        "P. Shrenik Kumar(22891A1243)",
+    issuedBy: "InsightSoftware(50k per month)",
+    topic: "Internship",
+    date: "Janurary 2026",
+    academicYear: "2024-25",
+    count: "01",
+  },
 ];
 
 const Achievements = () => {
@@ -119,33 +155,55 @@ const Achievements = () => {
   // Sort academic years (e.g., "2021-22" then "2022-23")
   const academicYears = Object.keys(summaryByAcademicYear).sort();
 
-  // Group achievements by date
-  const groupedByDate = studentAchievements.reduce((acc, achievement) => {
-    const date = achievement.date || 'Unknown';
-    if (!acc[date]) {
-      acc[date] = [];
+  // Group achievements by year (extract year from `date` or `academicYear`) and sort years descending
+  const getYearFromString = (str) => {
+    if (!str) return null;
+    // find first 4-digit year (e.g., 2025)
+    const match = str.match(/(20\d{2})/);
+    if (match) return match[1];
+    // fallback: academicYear like '2024-25' -> take first 4 chars
+    if (/^\d{4}-/.test(str)) return str.slice(0, 4);
+    return null;
+  };
+
+  const monthMap = {
+    January: 0, February: 1, March: 2, April: 3,
+    May: 4, June: 5, July: 6, August: 7,
+    September: 8, October: 9, November: 10, December: 11
+  };
+
+  const parseMonthLabel = (str) => {
+    if (!str) return 'Unknown';
+    // Try to find first occurrence of Month and Year
+    const m = str.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s*(?:-|–|to)?\s*(?:[A-Za-z]+\s*)?(20\d{2})/i);
+    if (m) {
+      const month = m[1];
+      const year = m[2];
+      return `${month} ${year}`;
     }
-    acc[date].push(achievement);
+    // If pattern not matched, try to capture a 4-digit year
+    const y = str.match(/(20\d{2})/);
+    if (y) return y[1];
+    return str;
+  };
+
+  // Group by year -> monthLabel -> achievements
+  const groupedByYearMonth = studentAchievements.reduce((acc, achievement) => {
+    const yearFromDate = getYearFromString(achievement.date);
+    const yearFromAcademic = getYearFromString(achievement.academicYear);
+    const year = yearFromDate || yearFromAcademic || 'Unknown';
+    const monthLabel = parseMonthLabel(achievement.date) || 'Unknown';
+    if (!acc[year]) acc[year] = {};
+    if (!acc[year][monthLabel]) acc[year][monthLabel] = [];
+    acc[year][monthLabel].push(achievement);
     return acc;
   }, {});
 
-  // Sort dates DESCENDING (newest first)
-  const sortedDates = Object.keys(groupedByDate).sort((a, b) => {
-    const parseMonthYear = (str) => {
-      const monthMap = {
-        "January": 0, "February": 1, "March": 2, "April": 3,
-        "May": 4, "June": 5, "July": 6, "August": 7,
-        "September": 8, "October": 9, "November": 10, "December": 11
-      };
-      const [monthName, yearStr] = str.split(' ');
-      const monthIndex = monthMap[monthName];
-      const year = parseInt(yearStr, 10);
-      return new Date(year, monthIndex, 1);
-    };
-
-    const dateA = parseMonthYear(a);
-    const dateB = parseMonthYear(b);
-    return dateB.getTime() - dateA.getTime(); // Sort descending
+  // Sort years descending (newest first), keep 'Unknown' at the end
+  const sortedYears = Object.keys(groupedByYearMonth).sort((a, b) => {
+    if (a === 'Unknown') return 1;
+    if (b === 'Unknown') return -1;
+    return parseInt(b, 10) - parseInt(a, 10);
   });
 
   return (
@@ -209,55 +267,67 @@ const Achievements = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-department-blue">
               Timeline of Success
             </h2>
-            {sortedDates.map((date) => (
-                <div key={date} className="mb-12 relative">
+            {sortedYears.map((year) => (
+                <div key={year} className="mb-12 relative">
                   <h3 className="text-2xl font-bold text-teal-600 mb-6 sticky top-0 bg-gray-50 py-2 z-10 px-4 md:px-0 w-full border-b-2 border-teal-200 shadow-sm">
-                    {date}
+                    {year}
                   </h3>
-                  <div className="border-l-4 border-teal-400 pl-8 space-y-8">
-                    {groupedByDate[date].map((achievement, index) => {
-                      // --- Start of Read More/Show Less Logic ---
-                      const studentNamesArray = achievement.studentName.split(',').map(name => name.trim());
-                      const maxNamesToShow = 6; // Display up to 6 names initially
+                  <div className="space-y-6">
+                    {(() => {
+                      const months = Object.keys(groupedByYearMonth[year] || {});
+                      const sortedMonths = months.sort((a, b) => {
+                        const ma = (a.match(/([A-Za-z]+)\s*(20\d{2})/) || [])[1];
+                        const mb = (b.match(/([A-Za-z]+)\s*(20\d{2})/) || [])[1];
+                        if (ma && mb && monthMap[ma] !== undefined && monthMap[mb] !== undefined) {
+                          return monthMap[mb] - monthMap[ma];
+                        }
+                        return b.localeCompare(a);
+                      });
 
-                      // Check if this specific achievement's student list is expanded
-                      const isExpanded = expandedStudentsIndex === `${date}-${index}`;
+                      return sortedMonths.map((monthLabel) => (
+                        <div key={monthLabel} className="relative">
+                          <h4 className="text-xl font-semibold text-teal-600 mb-4">{monthLabel}</h4>
+                          <div className="border-l-4 border-teal-400 pl-8 space-y-8">
+                            {groupedByYearMonth[year][monthLabel].map((achievement, index) => {
+                              const studentNamesArray = achievement.studentName.split(',').map(name => name.trim());
+                              const maxNamesToShow = 6;
+                              const key = `${year}-${monthLabel}-${index}`;
+                              const isExpanded = expandedStudentsIndex === key;
+                              const displayedNames = isExpanded ? studentNamesArray : studentNamesArray.slice(0, maxNamesToShow);
 
-                      const displayedNames = isExpanded
-                          ? studentNamesArray
-                          : studentNamesArray.slice(0, maxNamesToShow);
-
-                      return (
-                          <div key={index} className="relative group">
-                            <span className="absolute w-5 h-5 bg-teal-500 rounded-full -left-10 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 border-white z-10 transition-transform duration-300 group-hover:scale-125"></span>
-                            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                              <h4 className="text-xl font-bold text-teal-700 mb-2">
-                                {achievement.topic} ({achievement.count} student{Number(achievement.count) > 1 ? 's' : ''})
-                              </h4>
-                              <p className="text-md text-gray-700 mb-2">
-                                <span className="font-semibold">Issued By:</span> {achievement.issuedBy}
-                              </p>
-                              <p className="text-md text-gray-600 mb-1">
-                                <span className="font-semibold text-justify">Student Achievers:</span>{' '}
-                                {displayedNames.map((name, i) => (
-                                    <span key={i}>{name}{i < displayedNames.length - 1 ? ', ' : ''}</span>
-                                ))}
-                                {/* Only show button if there are more names than initially displayed */}
-                                {studentNamesArray.length > maxNamesToShow && (
-                                    <button
-                                        onClick={() =>
-                                            setExpandedStudentsIndex(isExpanded ? null : `${date}-${index}`)
-                                        }
-                                        className="text-department-blue hover:underline ml-1 focus:outline-none"
-                                    >
-                                      {isExpanded ? ' (Show Less)' : ' (Full List of Student Details...)'}
-                                    </button>
-                                )}
-                              </p>
-                            </div>
+                              return (
+                                <div key={key} className="relative group">
+                                  <span className="absolute w-5 h-5 bg-teal-500 rounded-full -left-10 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 border-white z-10 transition-transform duration-300 group-hover:scale-125"></span>
+                                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1">
+                                    <h4 className="text-xl font-bold text-teal-700 mb-2">
+                                      {achievement.topic} ({achievement.count} student{Number(achievement.count) > 1 ? 's' : ''})
+                                    </h4>
+                                    <p className="text-md text-gray-700 mb-2">
+                                      <span className="font-semibold">Issued By:</span> {achievement.issuedBy}
+                                    </p>
+                                    <p className="text-sm text-gray-500 mb-2">Date: {achievement.date}</p>
+                                    <p className="text-md text-gray-600 mb-1">
+                                      <span className="font-semibold text-justify">Student Achievers:</span>{' '}
+                                      {displayedNames.map((name, i) => (
+                                        <span key={i}>{name}{i < displayedNames.length - 1 ? ', ' : ''}</span>
+                                      ))}
+                                      {studentNamesArray.length > maxNamesToShow && (
+                                        <button
+                                          onClick={() => setExpandedStudentsIndex(isExpanded ? null : key)}
+                                          className="text-department-blue hover:underline ml-1 focus:outline-none"
+                                        >
+                                          {isExpanded ? ' (Show Less)' : ' (Full List of Student Details...)'}
+                                        </button>
+                                      )}
+                                    </p>
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
-                      );
-                    })}
+                        </div>
+                      ));
+                    })()}
                   </div>
                 </div>
             ))}
