@@ -245,7 +245,7 @@ const IndustryInteraction = () => {
       title: 'Microsoft-AI Workshop ',
       organization: 'Microsoft-AI Workshop',
       date: 'July 19, 2025',
-      certificates: ['/public/msg.jpeg','/public/nvc.jpeg'],
+      certificates: ['/public/msg.jpeg','/nvc.jpeg'],
       participants: [
         { studentName: 'Ch. Navya Sri', rollNumber: '22891A1213' },
       ],
