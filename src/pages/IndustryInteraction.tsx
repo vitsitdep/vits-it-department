@@ -188,7 +188,7 @@ const IndustryInteraction = () => {
       title: 'Microsoft Bootcamp ',
       organization: 'Microsoft',
       date: 'May 10, 2025',
-      certificates: ['/public/m9.jpeg','/public/m10.jpeg','/public/m11.jpeg'],
+      certificates: ['/m9.jpeg','/m10.jpeg','/m11.jpeg'],
       participants: [
         { studentName: 'BOBBALA ROHITH REDDY', rollNumber: '22891A1209' },
         { studentName: 'CANJEEVARAM RAJU HRITHIK', rollNumber: '22891A1211' },
@@ -245,7 +245,7 @@ const IndustryInteraction = () => {
       title: 'Microsoft-AI Workshop ',
       organization: 'Microsoft-AI Workshop',
       date: 'July 19, 2025',
-      certificates: ['/public/msg.jpeg','/nvc.jpeg'],
+      certificates: ['/msg.jpeg','/nvc.jpeg'],
       participants: [
         { studentName: 'Ch. Navya Sri', rollNumber: '22891A1213' },
       ],
