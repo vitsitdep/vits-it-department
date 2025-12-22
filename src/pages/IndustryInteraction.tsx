@@ -4,8 +4,9 @@ import { Building2, Handshake, Users, Calendar, MapPin, Clock, Eye, X, User, IdC
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// Avatar components removed as not needed for this page
 import { useToast } from "@/hooks/use-toast";
 import {
   Table,
@@ -28,7 +29,10 @@ const IndustryInteraction = () => {
   const [showEventPhotos, setShowEventPhotos] = useState(false);
   const [showAttendees, setShowAttendees] = useState(false);
   const [showCertificate, setShowCertificate] = useState<StudentInteraction | null>(null);
-  const { toast } = useToast();
+  // toast removed as share functionality was removed from cards
+  // const { toast } = useToast();
+  const [selectedGroup, setSelectedGroup] = useState<EventGroup | null>(null);
+  const [expandedCompany, setExpandedCompany] = useState<string | null>(null);
 
   function toSmartTitleCase(name: string) {
     return name
@@ -68,6 +72,14 @@ const IndustryInteraction = () => {
     interactionType: string;
     date: string;
     certificate?: string;
+  }
+
+  interface EventGroup {
+    id: string; // composite key org|date
+    title: string; // organization or event title
+    organization: string;
+    date: string;
+    interactions: StudentInteraction[];
   }
   
   {/*const studentEvents: Event[] = [
@@ -452,114 +464,258 @@ const IndustryInteraction = () => {
           ))}
         </div>
 
-        {/* List of Students Referred for Placements */}
+        {/* List of Students Referred for Placements - grouped by company (cards) */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold font-heading text-department-dark mb-6">Students Referred for Placements</h2>
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="font-bold">Student Name</TableHead>
-                  <TableHead className="font-bold">Roll Number</TableHead>
-                  <TableHead className="font-bold">Company</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-              <TableRow>
-                <TableCell> 21891A1201 </TableCell>
-                <TableCell> A Venkata Sai Sumanth </TableCell>
-                <TableCell> GSPANN </TableCell>
-              </TableRow>
-                <TableRow>
-                  <TableCell> 21891A1206 </TableCell>
-                  <TableCell> Bobbala Ashwini </TableCell>
-                  <TableCell> GSPANN </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell> 21891A1233 </TableCell>
-                  <TableCell> Kunchala Chandra Shekar </TableCell>
-                  <TableCell> GSPANN </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell> 21891A1234 </TableCell>
-                  <TableCell> Kunta Mallikraj </TableCell>
-                  <TableCell> GSPANN </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell> 21891A1240 </TableCell>
-                  <TableCell> Mandalapu Nikhitha </TableCell>
-                  <TableCell> GSPANN </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+
+          {(() => {
+            const placements = [
+              {
+                company: 'GSPANN',
+                students: [
+                  { roll: '21891A1201', name: 'A Venkata Sai Sumanth' },
+                  { roll: '21891A1206', name: 'Bobbala Ashwini' },
+                  { roll: '21891A1233', name: 'Kunchala Chandra Shekar' },
+                  { roll: '21891A1234', name: 'Kunta Mallikraj' },
+                  { roll: '21891A1240', name: 'Mandalapu Nikhitha' },
+                ],
+              },
+            ];
+
+            return (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {placements.map((p) => {
+                  const expanded = expandedCompany === p.company;
+                  return (
+                    <Card key={p.company} className="border shadow-sm">
+                      <CardContent className="p-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="text-lg font-semibold text-department-dark">{p.company}</div>
+                            <div className="text-sm text-gray-600">{p.students.length} student{p.students.length>1? 's':''}</div>
+                          </div>
+                          <div>
+                            <Button variant="ghost" size="sm" onClick={() => setExpandedCompany(expanded ? null : p.company)}>
+                              {expanded ? 'Hide' : 'View'}
+                            </Button>
+                          </div>
+                        </div>
+
+                        {expanded && (
+                          <div className="mt-4 border-t pt-3 max-h-48 overflow-y-auto">
+                            <ul className="divide-y">
+                              {p.students.map((s) => (
+                                <li key={s.roll} className="py-2">
+                                  <div className="flex items-center justify-between">
+                                    <div className="text-sm text-department-dark">{s.name}</div>
+                                    <div className="text-sm text-gray-600">{s.roll}</div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
 
-        {/* Student Interaction Records Section */}
+        {/* Student Interaction Records grouped by Event */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold font-heading text-department-dark mb-6">Student Industry Interactions</h2>
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="font-bold">Student Name</TableHead>
-                  <TableHead className="font-bold">Roll Number</TableHead>
-                  <TableHead className="font-bold">Organization</TableHead>
-                  <TableHead className="font-bold">Type of Interaction</TableHead>
-                  <TableHead className="font-bold">Date</TableHead>
-                  <TableHead className="font-bold">Certificate</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {studentInteractions.map((interaction) => (
-                  <TableRow key={interaction.id}>
-                    <TableCell className="flex items-center gap-2">
-                      <User size={16} className="text-department-purple" />
-                      {toSmartTitleCase(interaction.studentName)}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <IdCard size={16} className="text-department-purple" />
-                        {interaction.rollNumber}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Building2 size={16} className="text-department-purple" />
-                        {interaction.organization}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Handshake size={16} className="text-department-purple" />
-                        {interaction.interactionType}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Calendar size={16} className="text-department-purple" />
-                        {interaction.date}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      {interaction.certificate && (
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="flex items-center gap-2"
-                          onClick={() => setShowCertificate(interaction)}
-                        >
-                          <FileImage size={16} className="text-department-purple" />
-                          View
-                        </Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+          <h2 className="text-2xl font-bold font-heading text-department-dark mb-6">Industry Events & Interactions</h2>
+
+          {/* Group student interactions by organization + date */}
+          {(() => {
+            // Helper: normalize organization strings for comparison
+            const normalize = (str: string) =>
+              str
+                .toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9]/g, '');
+
+            // Levenshtein distance to detect small typos (simple implementation)
+            const levenshtein = (a: string, b: string) => {
+              const m = a.length;
+              const n = b.length;
+              const dp: number[][] = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+              for (let i = 0; i <= m; i++) dp[i][0] = i;
+              for (let j = 0; j <= n; j++) dp[0][j] = j;
+              for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                  const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                  dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+                }
+              }
+              return dp[m][n];
+            };
+
+            const map = new Map<string, EventGroup>();
+            // override map for specific org+date to display a custom event title
+            const eventTitleOverrides = new Map<string, string>([
+              ['Microsoft||May 5, 2025', 'Microsoft Data Fest'],
+            ]);
+            const canonicals: { norm: string; display: string }[] = [];
+
+            studentInteractions.forEach((s) => {
+              const normOrg = normalize(s.organization);
+              // find an existing canonical that is very similar
+              let matched = canonicals.find(c => c.norm === normOrg);
+              if (!matched) {
+                matched = canonicals.find(c => levenshtein(c.norm, normOrg) <= 2);
+              }
+              const canonicalOrg = matched ? matched.display : s.organization;
+              if (!matched) canonicals.push({ norm: normOrg, display: canonicalOrg });
+
+              const key = `${canonicalOrg}||${s.date}`;
+              const displayTitle = eventTitleOverrides.get(key) || canonicalOrg;
+              if (!map.has(key)) {
+                map.set(key, {
+                  id: key,
+                  title: displayTitle,
+                  organization: canonicalOrg,
+                  date: s.date,
+                  interactions: [s],
+                });
+              } else {
+                map.get(key)!.interactions.push(s);
+              }
+            });
+            const groups = Array.from(map.values());
+
+            return (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {groups.map((g) => {
+                  const sampleCert = g.interactions.find((i) => i.certificate)?.certificate;
+                  return (
+                    <Card key={g.id} className="border-none shadow-md transition-transform hover:-translate-y-1">
+                      <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div className="flex items-center gap-4 min-w-0">
+                          {sampleCert ? (
+                            <button
+                              onClick={() => {
+                                const first = g.interactions.find(i => i.certificate && i.certificate === sampleCert);
+                                if (first) setShowCertificate(first);
+                              }}
+                              className="block w-20 h-20 shrink-0 rounded-sm overflow-hidden shadow-sm focus:outline-none"
+                            >
+                              <img src={sampleCert} alt={`${g.title} sample certificate`} className="w-full h-full object-cover" />
+                            </button>
+                          ) : (
+                            <div className="w-20 h-20 bg-gray-100 rounded-sm flex items-center justify-center text-gray-400">No Image</div>
+                          )}
+
+                          <div className="min-w-0">
+                            <h3 className="text-lg font-semibold text-department-dark whitespace-normal leading-tight">{g.title}</h3>
+                            <p className="text-sm text-gray-600 mt-1">{g.date}</p>
+                            <p className="text-sm text-gray-600 mt-2">{g.interactions.length} participant{g.interactions.length>1? 's':''}</p>
+                          </div>
+                        </div>
+
+                        <div className="ml-auto mt-4 sm:mt-0">
+                          <Button variant="outline" size="sm" onClick={() => setSelectedGroup(g)}>
+                            View Participants
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
+
+        {/* Selected Event Group Dialog (participants) */}
+        {selectedGroup && (
+          <Dialog open={selectedGroup !== null} onOpenChange={() => setSelectedGroup(null)}>
+            <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>
+                  <span className="block whitespace-normal leading-tight">{selectedGroup.title} — {selectedGroup.date}</span>
+                </DialogTitle>
+                <DialogDescription>
+                  {selectedGroup.interactions.length} participant{selectedGroup.interactions.length>1? 's':''}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="mt-4">
+                {/* Unique certificate images on top */}
+                {(() => {
+                  // Deduplicate certificates by filename (basename) and keep the first occurrence
+                  const seen = new Set<string>();
+                  const uniqueCerts: { file: string; original: string; interaction?: StudentInteraction }[] = [];
+                  selectedGroup.interactions.forEach((i) => {
+                    if (!i.certificate) return;
+                    const parts = i.certificate.split('/');
+                    let file = parts[parts.length - 1] || i.certificate;
+                    file = file.split('?')[0].toLowerCase();
+                    if (!seen.has(file)) {
+                      seen.add(file);
+                      uniqueCerts.push({ file, original: i.certificate, interaction: i });
+                    }
+                  });
+
+                  return uniqueCerts.length > 0 ? (
+                    <div className="mb-4">
+                      <h3 className="text-sm font-medium text-department-dark mb-3">Certificates</h3>
+                      <div className="flex gap-3 overflow-x-auto pb-2">
+                        {uniqueCerts.map((certObj, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => certObj.interaction && setShowCertificate(certObj.interaction)}
+                            className="flex-shrink-0 w-40 focus:outline-none"
+                          >
+                            <div className="w-40 h-24 rounded-md overflow-hidden shadow-sm">
+                              <img src={certObj.original} alt={`certificate-${certObj.file}`} className="w-full h-full object-cover" />
+                            </div>
+                            {certObj.interaction && (
+                              <div className="mt-1 text-xs text-gray-600">{toSmartTitleCase(certObj.interaction.studentName)}</div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null;
+                })()}
+                {/* Participants list (names and rolls only) - scrollable when long */}
+                <div className="max-h-56 overflow-y-auto mt-4">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="font-bold">Student Name</TableHead>
+                        <TableHead className="font-bold">Roll Number</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {selectedGroup.interactions.map((interaction) => (
+                        <TableRow key={interaction.id}>
+                          <TableCell className="flex items-center gap-2">
+                            <User size={16} className="text-department-purple" />
+                            {toSmartTitleCase(interaction.studentName)}
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              <IdCard size={16} className="text-department-purple" />
+                              {interaction.rollNumber}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 mt-4">
+                <Button variant="outline" onClick={() => setSelectedGroup(null)}>Close</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
 
         {/* Certificate Dialog */}
         {showCertificate && (
