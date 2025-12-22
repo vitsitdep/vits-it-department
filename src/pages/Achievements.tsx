@@ -97,7 +97,7 @@ const studentAchievements = [
     issuedBy: "Logical Media (1.24 LPA)",
     topic: "Internship",
     date: "August-December 2025",
-    academicYear: "2024-25",
+    academicYear: "2025-26",
     count: "01",
   },
   {
@@ -106,7 +106,7 @@ const studentAchievements = [
     issuedBy: "Compose Tech (1.5 L for 3 months)",
     topic: "Internship",
     date: "August-November 2025",
-    academicYear: "2024-25",
+    academicYear: "2025-26",
     count: "01",
   },
   {
@@ -115,7 +115,7 @@ const studentAchievements = [
     issuedBy: "DRDO(30K for 6 months)",
     topic: "Internship",
     date: "September 2025- February 2026",
-    academicYear: "2024-25",
+    academicYear: "2025-26",
     count: "01",
   },
   {
@@ -123,8 +123,8 @@ const studentAchievements = [
         "P. Shrenik Kumar(22891A1243)",
     issuedBy: "InsightSoftware(50k per month)",
     topic: "Internship",
-    date: "Janurary 2026",
-    academicYear: "2024-25",
+    date: "January 2026",
+    academicYear: "2025-26",
     count: "01",
   },
 ];
