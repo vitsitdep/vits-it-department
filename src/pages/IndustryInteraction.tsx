@@ -28,7 +28,7 @@ const IndustryInteraction = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [showEventPhotos, setShowEventPhotos] = useState(false);
   const [showAttendees, setShowAttendees] = useState(false);
-  const [showCertificate, setShowCertificate] = useState<StudentInteraction | null>(null);
+  const [showCertificate, setShowCertificate] = useState<{ src: string; title?: string } | null>(null);
   // toast removed as share functionality was removed from cards
   // const { toast } = useToast();
   const [selectedGroup, setSelectedGroup] = useState<EventGroup | null>(null);
@@ -74,12 +74,18 @@ const IndustryInteraction = () => {
     certificate?: string;
   }
 
+  interface Participant {
+    studentName: string;
+    rollNumber: string;
+  }
+
   interface EventGroup {
     id: string; // composite key org|date
     title: string; // organization or event title
     organization: string;
     date: string;
-    interactions: StudentInteraction[];
+    participants: Participant[];
+    certificates?: string[];
   }
   
   {/*const studentEvents: Event[] = [
@@ -148,278 +154,148 @@ const IndustryInteraction = () => {
     }
   ]; */}
 
-  const studentInteractions: StudentInteraction[] = [
-   {
-      id: 1,
-      studentName: "Chiluveru Navya Sri",
-      rollNumber: "22891A1213",
-      organization: "StartupIndia",
-      interactionType: "Internship",
-      date: "January - March, 2025",
-      certificate: "/nvin.jpeg"
+  // Events: enter data per-event here (event-level certificates and participants)
+  const events: EventGroup[] = [
+    {
+      id: 'startupindia||January - March, 2025',
+      title: 'StartupIndia Internship ',
+      organization: 'StartupIndia',
+      date: 'January - March, 2025',
+      certificates: ['/nvin.jpeg','/smin.jpeg','/rmin.jpeg'],
+      participants: [
+          { studentName: 'Chiluveru Navya Sri', rollNumber: '22891A1213' },
+          { studentName: 'M Sai Rithika', rollNumber: '22891A1232' },
+          { studentName: 'Sai Rishika Madala', rollNumber: '22891A1251' },
+        ],
     },
     {
-      id: 2,
-      studentName: "M Sai Rithika",
-      rollNumber: "22891A1232",
-      organization: "StartupIndia",
-      interactionType: "Internship",
-      date: "January - March, 2025",
-      certificate: "/smin.jpeg"
+      id: 'microsoft||May 5, 2025',
+      title: 'Microsoft Bootcamp ',
+      organization: 'Microsoft',
+      date: 'May 5, 2025',
+      certificates: ['/13ad.jpeg','abhiad.jpeg','31ad.jpeg'],
+      participants: [
+        { studentName: 'Abhitej Salla', rollNumber: '23891A1201' },
+        { studentName: 'Buram Sai Rishika', rollNumber: '23891A1213' },
+        { studentName: 'G VENKATA SRIHARSHARAM', rollNumber: '23891A1222' },
+        { studentName: 'K SHIVA PRANEETH REDDY', rollNumber: '23891A1228' },
+        { studentName: 'Konduri Mohith', rollNumber: '23891A1232' },
+        { studentName: 'PAGIDIMARRI BHARATH KUMAR', rollNumber: '23891A1244' },
+      ],
     },
     {
-      id: 3,
-      studentName: "Sai Rishika Madala",
-      rollNumber: "22891A1251",
-      organization: "SatrtupIndia",
-      interactionType: "Internship",
-      date: "January - March, 2025",
-      certificate: "/rmin.jpeg"
+      id: 'microsoft||May 10, 2025',
+      title: 'Microsoft Bootcamp ',
+      organization: 'Microsoft',
+      date: 'May 10, 2025',
+      certificates: ['/public/m9.jpeg','/public/m10.jpeg','/public/m11.jpeg'],
+      participants: [
+        { studentName: 'BOBBALA ROHITH REDDY', rollNumber: '22891A1209' },
+        { studentName: 'CANJEEVARAM RAJU HRITHIK', rollNumber: '22891A1211' },
+        { studentName: 'CHILUVERU NAVYA SRI', rollNumber: '22891A1213' },
+        { studentName: 'GODHALA HARIKA REDDY', rollNumber: '22891A1220' },
+        { studentName: 'KATUKURI VIJITHA', rollNumber: '22891A1226' },
+        { studentName: 'KOMIRISHETTY KEERTHANA', rollNumber: '22891A1227' },
+        { studentName: 'M SAI RITHIKA', rollNumber: '22891A1232' },
+        { studentName: 'MUSUNURU PRANEETHA', rollNumber: '22891A1236' },
+        { studentName: 'PAMPANA SAI KRISHNA', rollNumber: '22891A1237' },
+        { studentName: 'PEDDI SRAVANI', rollNumber: '22891A1239' },
+        { studentName: 'PURALASETTI SUPRIYA', rollNumber: '22891A1244' },
+        { studentName: 'SAI RISHITHA MADALA', rollNumber: '22891A1251' },
+        { studentName: 'SURUGU HARSHITH KUMAR GOUD', rollNumber: '22891A1257' },
+        { studentName: 'VADDAPALLY UTTEJ KUMAR', rollNumber: '22891A1259' },
+        { studentName: 'VEMU SATHVIKA', rollNumber: '22891A1262' },
+        { studentName: 'SHAIK MUSKAN', rollNumber: '2895A1203' },
+        { studentName: 'JAKARAM JAGANNATH PREETHAM', rollNumber: '23895A1205' },
+      ],
     },
     {
-      id: 4,
-      studentName: "B.Pavan babu",
-      rollNumber: "22891A1207",
-      organization: "Rao Associatis",
-      interactionType: "Internship",
-      date: "February 24, 2025",
-      certificate: "/pavanol.jpeg"
+      id: 'raoassociates||February 24, 2025',
+      title: 'Rao Associates Internship ',
+      organization: 'Rao Associates',
+      date: 'February 24, 2025',
+      certificates: ['/pavanol.jpeg'],
+      participants: [
+        { studentName: 'B.Pavan babu', rollNumber: '22891A1207' },
+      ],
     },
     {
-      id: 5,
-      studentName: "Idukuda Venkatapathi Babu",
-      rollNumber: "23891A1225",
-      organization: "Salesforce",
-      interactionType: "Community meeting",
-      date: "April 19, 2025",
-      certificate: "/sf.jpeg"
+      id: 'salesforce||April 19, 2025',
+      title: 'Salesforce Community Meeting ',
+      organization: 'Salesforce',
+      date: 'April 19, 2025',
+      certificates: ['/sf.jpeg', '/public/ssg.jpeg'],
+      participants: [
+        { studentName: 'Idukuda Venkatapathi Babu', rollNumber: '23891A1225' },
+        { studentName: 'Vure Sathvik', rollNumber: '23891A1264' },
+      ],
     },
     {
-      id: 6,
-      studentName: "Vure Sathvik",
-      rollNumber: "23891A1264",
-      organization: "Salesforce",
-      interactionType: "Community event",
-      date: "April 19, 2025",
-      certificate: "/sf.jpeg"
+      id: 'iitmadras||April 30, 2025',
+      title: 'IIT Madras Diploma Course ',
+      organization: 'IIT Madras',
+      date: 'April 30, 2025',
+      certificates: ['/sf.jpeg'],
+      participants: [
+        { studentName: 'Idukuda Venkatapathi Babu', rollNumber: '23891A1225' },
+      ],
     },
     {
-      id: 7,
-      studentName: "Idukuda Venkatapathi Babu",
-      rollNumber: "23891A1225",
-      organization: "IIT Madras",
-      interactionType: "Diploma Course",
-      date: "April 30, 2025",
-      certificate: "/sf.jpeg"
+      id: 'microsoft-ai||July 19, 2025',
+      title: 'Microsoft-AI Workshop ',
+      organization: 'Microsoft-AI Workshop',
+      date: 'July 19, 2025',
+      certificates: ['/public/msg.jpeg','/public/nvc.jpeg'],
+      participants: [
+        { studentName: 'Ch. Navya Sri', rollNumber: '22891A1213' },
+      ],
     },
-    {
-      id: 8,
-      studentName: "Abhitej Salla",
-      rollNumber: "23891A1201",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "abhiad.jpeg"
-    },
-    {
-      id: 9,
-      studentName: "Buram Sai Rishika",
-      rollNumber: "23891A1213",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "/13ad.jpeg"
-    },
-    {
-      id: 10,
-      studentName: "G VENKATA SRIHARSHARAM ",
-      rollNumber: "23891A1222",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "/13ad.jpeg"
-    },
-    {
-      id: 11,
-      studentName: "K SHIVA PRANEETH REDDY",
-      rollNumber: "23891A1228",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "/13ad.jpeg"
-    },
-    {
-      id: 12,
-      studentName: "Konduri Mohith",
-      rollNumber: "23891A1232",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 13,
-      studentName: "PAGIDIMARRI BHARATH KUMAR",
-      rollNumber: "23891A1244",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 5, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 14,
-      studentName: "BOBBALA ROHITH REDDY",
-      rollNumber: "22891A1209",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 15,
-      studentName: "CANJEEVARAM RAJU HRITHIK",
-      rollNumber: "22891A1211",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 16,
-      studentName: "CHILUVERU NAVYA SRI",
-      rollNumber: "22891A1213",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 17,
-      studentName: "GODHALA HARIKA REDDY",
-      rollNumber: "22891A1220",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 18,
-      studentName: "KATUKURI VIJITHA",
-      rollNumber: "22891A1226",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 19,
-      studentName: "KOMIRISHETTY KEERTHANA",
-      rollNumber: "22891A1227",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 20,
-      studentName: "M SAI RITHIKA",
-      rollNumber: "22891A1232",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 21,
-      studentName: "MUSUNURU PRANEETHA",
-      rollNumber: "22891A1236",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 22,
-      studentName: "PAMPANA SAI KRISHNA",
-      rollNumber: "22891A1237",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 23,
-      studentName: "PEDDI SRAVANI",
-      rollNumber: "22891A1239",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 24,
-      studentName: "PURALASETTI SUPRIYA",
-      rollNumber: "22891A1244",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 25,
-      studentName: "SAI RISHITHA MADALA",
-      rollNumber: "22891A1251",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 26,
-      studentName: "SURUGU HARSHITH KUMAR GOUD",
-      rollNumber: "22891A1257",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 27,
-      studentName: "VADDAPALLY UTTEJ KUMAR",
-      rollNumber: "22891A1259",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 28,
-      studentName: "VEMU SATHVIKA",
-      rollNumber: "22891A1262",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 29,
-      studentName: "SHAIK MUSKAN",
-      rollNumber: "23895A1203",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    },
-    {
-      id: 30,
-      studentName: "JAKARAM JAGANNATH PREETHAM",
-      rollNumber: "23895A1205",
-      organization: "Microsoft",
-      interactionType: "Bootcamp",
-      date: "May 10, 2025",
-      certificate: "31ad.jpeg"
-    }
   ];
+
+  // Helper: produce a timestamp for an event `date` string; handles ranges like "January - March, 2025" by using the last month/day
+  const monthMap: Record<string, number> = {
+    january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
+    july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+  };
+
+  function getEventTimestamp(dateStr: string): number {
+    if (!dateStr) return 0;
+    let s = dateStr.trim();
+    // If it's a range like "January - March, 2025" take right side
+    if (s.includes('-')) {
+      const parts = s.split('-');
+      s = parts[parts.length - 1].trim();
+    }
+    // Try native parse first
+    const parsed = Date.parse(s);
+    if (!isNaN(parsed)) return parsed;
+
+    // Try to extract month and year (optionally day)
+    const m = s.match(/([A-Za-z]+)\s*(\d{1,2})?,?\s*(\d{4})/);
+    if (m) {
+      const monthName = m[1].toLowerCase();
+      const day = m[2] ? parseInt(m[2], 10) : 1;
+      const year = parseInt(m[3], 10);
+      const month = monthMap[monthName] || 1;
+      return new Date(year, month - 1, day).getTime();
+    }
+
+    // Fallback: look for month and year without day
+    const m2 = s.match(/([A-Za-z]+)\s*(\d{4})/);
+    if (m2) {
+      const monthName = m2[1].toLowerCase();
+      const year = parseInt(m2[2], 10);
+      const month = monthMap[monthName] || 1;
+      return new Date(year, month - 1, 1).getTime();
+    }
+
+    // Last resort: parse year only
+    const y = s.match(/(\d{4})/);
+    if (y) return new Date(parseInt(y[1], 10), 0, 1).getTime();
+    return 0;
+  }
+
+  const sortedEvents = [...events].sort((a, b) => getEventTimestamp(b.date) - getEventTimestamp(a.date));
 
   const interactions = [
     {
@@ -528,105 +404,41 @@ const IndustryInteraction = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold font-heading text-department-dark mb-6">Industry Events & Interactions</h2>
 
-          {/* Group student interactions by organization + date */}
-          {(() => {
-            // Helper: normalize organization strings for comparison
-            const normalize = (str: string) =>
-              str
-                .toLowerCase()
-                .trim()
-                .replace(/[^a-z0-9]/g, '');
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedEvents.map((g) => {
+              const sampleCert = g.certificates?.[0];
+              return (
+                <Card key={g.id} className="border-none shadow-md transition-transform hover:-translate-y-1">
+                  <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div className="flex items-center gap-4 min-w-0">
+                      {sampleCert ? (
+                        <button
+                          onClick={() => setShowCertificate({ src: sampleCert, title: g.title })}
+                          className="block w-20 h-20 shrink-0 rounded-sm overflow-hidden shadow-sm focus:outline-none"
+                        >
+                          <img src={sampleCert} alt={`${g.title} sample certificate`} className="w-full h-full object-cover" />
+                        </button>
+                      ) : (
+                        <div className="w-20 h-20 bg-gray-100 rounded-sm flex items-center justify-center text-gray-400">No Image</div>
+                      )}
 
-            // Levenshtein distance to detect small typos (simple implementation)
-            const levenshtein = (a: string, b: string) => {
-              const m = a.length;
-              const n = b.length;
-              const dp: number[][] = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
-              for (let i = 0; i <= m; i++) dp[i][0] = i;
-              for (let j = 0; j <= n; j++) dp[0][j] = j;
-              for (let i = 1; i <= m; i++) {
-                for (let j = 1; j <= n; j++) {
-                  const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-                  dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
-                }
-              }
-              return dp[m][n];
-            };
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-semibold text-department-dark whitespace-normal leading-tight">{g.title}</h3>
+                        <p className="text-sm text-gray-600 mt-1">{g.date}</p>
+                        <p className="text-sm text-gray-600 mt-2">{g.participants.length} participant{g.participants.length>1? 's':''}</p>
+                      </div>
+                    </div>
 
-            const map = new Map<string, EventGroup>();
-            // override map for specific org+date to display a custom event title
-            const eventTitleOverrides = new Map<string, string>([
-              ['Microsoft||May 5, 2025', 'Microsoft Data Fest'],
-            ]);
-            const canonicals: { norm: string; display: string }[] = [];
-
-            studentInteractions.forEach((s) => {
-              const normOrg = normalize(s.organization);
-              // find an existing canonical that is very similar
-              let matched = canonicals.find(c => c.norm === normOrg);
-              if (!matched) {
-                matched = canonicals.find(c => levenshtein(c.norm, normOrg) <= 2);
-              }
-              const canonicalOrg = matched ? matched.display : s.organization;
-              if (!matched) canonicals.push({ norm: normOrg, display: canonicalOrg });
-
-              const key = `${canonicalOrg}||${s.date}`;
-              const displayTitle = eventTitleOverrides.get(key) || canonicalOrg;
-              if (!map.has(key)) {
-                map.set(key, {
-                  id: key,
-                  title: displayTitle,
-                  organization: canonicalOrg,
-                  date: s.date,
-                  interactions: [s],
-                });
-              } else {
-                map.get(key)!.interactions.push(s);
-              }
-            });
-            const groups = Array.from(map.values());
-
-            return (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {groups.map((g) => {
-                  const sampleCert = g.interactions.find((i) => i.certificate)?.certificate;
-                  return (
-                    <Card key={g.id} className="border-none shadow-md transition-transform hover:-translate-y-1">
-                      <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <div className="flex items-center gap-4 min-w-0">
-                          {sampleCert ? (
-                            <button
-                              onClick={() => {
-                                const first = g.interactions.find(i => i.certificate && i.certificate === sampleCert);
-                                if (first) setShowCertificate(first);
-                              }}
-                              className="block w-20 h-20 shrink-0 rounded-sm overflow-hidden shadow-sm focus:outline-none"
-                            >
-                              <img src={sampleCert} alt={`${g.title} sample certificate`} className="w-full h-full object-cover" />
-                            </button>
-                          ) : (
-                            <div className="w-20 h-20 bg-gray-100 rounded-sm flex items-center justify-center text-gray-400">No Image</div>
-                          )}
-
-                          <div className="min-w-0">
-                            <h3 className="text-lg font-semibold text-department-dark whitespace-normal leading-tight">{g.title}</h3>
-                            <p className="text-sm text-gray-600 mt-1">{g.date}</p>
-                            <p className="text-sm text-gray-600 mt-2">{g.interactions.length} participant{g.interactions.length>1? 's':''}</p>
-                          </div>
-                        </div>
-
-                        <div className="ml-auto mt-4 sm:mt-0">
-                          <Button variant="outline" size="sm" onClick={() => setSelectedGroup(g)}>
-                            View Participants
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            );
-          })()}
+                    <div className="ml-auto mt-4 sm:mt-0">
+                      <Button variant="outline" size="sm" onClick={() => setSelectedGroup(g)}>
+                        View Participants
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
         {/* Selected Event Group Dialog (participants) */}
@@ -638,49 +450,30 @@ const IndustryInteraction = () => {
                   <span className="block whitespace-normal leading-tight">{selectedGroup.title} — {selectedGroup.date}</span>
                 </DialogTitle>
                 <DialogDescription>
-                  {selectedGroup.interactions.length} participant{selectedGroup.interactions.length>1? 's':''}
+                  {selectedGroup.participants.length} participant{selectedGroup.participants.length>1? 's':''}
                 </DialogDescription>
               </DialogHeader>
 
               <div className="mt-4">
-                {/* Unique certificate images on top */}
-                {(() => {
-                  // Deduplicate certificates by filename (basename) and keep the first occurrence
-                  const seen = new Set<string>();
-                  const uniqueCerts: { file: string; original: string; interaction?: StudentInteraction }[] = [];
-                  selectedGroup.interactions.forEach((i) => {
-                    if (!i.certificate) return;
-                    const parts = i.certificate.split('/');
-                    let file = parts[parts.length - 1] || i.certificate;
-                    file = file.split('?')[0].toLowerCase();
-                    if (!seen.has(file)) {
-                      seen.add(file);
-                      uniqueCerts.push({ file, original: i.certificate, interaction: i });
-                    }
-                  });
-
-                  return uniqueCerts.length > 0 ? (
-                    <div className="mb-4">
-                      <h3 className="text-sm font-medium text-department-dark mb-3">Certificates</h3>
-                      <div className="flex gap-3 overflow-x-auto pb-2">
-                        {uniqueCerts.map((certObj, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => certObj.interaction && setShowCertificate(certObj.interaction)}
-                            className="flex-shrink-0 w-40 focus:outline-none"
-                          >
-                            <div className="w-40 h-24 rounded-md overflow-hidden shadow-sm">
-                              <img src={certObj.original} alt={`certificate-${certObj.file}`} className="w-full h-full object-cover" />
-                            </div>
-                            {certObj.interaction && (
-                              <div className="mt-1 text-xs text-gray-600">{toSmartTitleCase(certObj.interaction.studentName)}</div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
+                {/* Event-level certificates (provided on the event object) */}
+                {selectedGroup.certificates && selectedGroup.certificates.length > 0 ? (
+                  <div className="mb-4">
+                    <h3 className="text-sm font-medium text-department-dark mb-3">Certificates</h3>
+                    <div className="flex gap-3 overflow-x-auto pb-2">
+                      {selectedGroup.certificates.map((cert, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setShowCertificate({ src: cert, title: selectedGroup.title })}
+                          className="flex-shrink-0 w-40 focus:outline-none"
+                        >
+                          <div className="w-40 h-24 rounded-md overflow-hidden shadow-sm">
+                            <img src={cert} alt={`certificate-${idx}`} className="w-full h-full object-cover" />
+                          </div>
+                        </button>
+                      ))}
                     </div>
-                  ) : null;
-                })()}
+                  </div>
+                ) : null}
                 {/* Participants list (names and rolls only) - scrollable when long */}
                 <div className="max-h-56 overflow-y-auto mt-4">
                   <Table>
@@ -691,8 +484,8 @@ const IndustryInteraction = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {selectedGroup.interactions.map((interaction) => (
-                        <TableRow key={interaction.id}>
+                      {selectedGroup.participants.map((interaction) => (
+                        <TableRow key={interaction.rollNumber || interaction.studentName}>
                           <TableCell className="flex items-center gap-2">
                             <User size={16} className="text-department-purple" />
                             {toSmartTitleCase(interaction.studentName)}
@@ -722,15 +515,15 @@ const IndustryInteraction = () => {
           <Dialog open={showCertificate !== null} onOpenChange={() => setShowCertificate(null)}>
             <DialogContent className="sm:max-w-2xl">
               <DialogHeader>
-                <DialogTitle>Certificate/Proof for {showCertificate.interactionType}</DialogTitle>
+                <DialogTitle>Certificate / Proof</DialogTitle>
                 <DialogDescription>
-                  {showCertificate.studentName} - {showCertificate.organization}
+                  {showCertificate.title}
                 </DialogDescription>
               </DialogHeader>
               <div className="relative w-full aspect-video mt-4 rounded-md overflow-hidden">
                 <img 
-                  src={showCertificate.certificate} 
-                  alt={`Certificate for ${showCertificate.interactionType} at ${showCertificate.organization}`}
+                  src={showCertificate.src} 
+                  alt={`Certificate for ${showCertificate.title || 'event'}`}
                   className="w-full h-full object-contain"
                 />
               </div>

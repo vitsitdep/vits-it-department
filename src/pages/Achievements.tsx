@@ -127,6 +127,33 @@ const studentAchievements = [
     academicYear: "2025-26",
     count: "01",
   },
+  {
+    studentName:
+        "MD. Mudassir(23891A1236)",
+    issuedBy: "GENAIVERSITY HACKATHON 2025",
+    topic: "Unique Idea & Innovation Award",
+    date: "October 2025",
+    academicYear: "2025-26",
+    count: "01",
+  },
+  {
+    studentName:
+        "MD. Mudassir(23891A1236), G. V. Sri HArsha Ram(23891A1222), P. Bharath Kumar(23891A1244)",
+    issuedBy: "CongnitiveX: GenAI HAckathon 2025 (VGNT ECE DEpartment)",
+    topic: "CongnitiveX Hackathon 3rd place",
+    date: "September 2025",
+    academicYear: "2025-26",
+    count: "03",
+  },
+  {
+    studentName:
+        "MD. Mudassir(23891A1236), K. Vishwak(24891A1230), P. YAshwanth Kumar(24891A1245), T. Mithul Reddy(24891A1255)",
+    issuedBy: "Robotica Chapter-3 Technical Fest (Geethanjali College)",
+    topic: "36 hours HAckathon 3rd place",
+    date: "October 2025",
+    academicYear: "2025-26",
+    count: "04",
+  },
 ];
 
 const Achievements = () => {
@@ -229,7 +256,7 @@ const Achievements = () => {
                     Internships
                   </th>
                   <th scope="col" className="px-6 py-3 text-xs font-medium uppercase tracking-wider">
-                    Specialized Training
+                    Specialized Training / Technical Achivements
                   </th>
                   <th scope="col" className="px-6 py-3 text-xs font-medium uppercase tracking-wider rounded-tr-lg">
                     Total Students
