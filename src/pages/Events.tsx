@@ -59,7 +59,7 @@ const events: EventsData = {
             title: 'Being part of blood donation camp at VITS',
             date: 'July 28, 2025',
             description: " Being part of blood donation camp at VITS on the occasion of Chairman Dr. Lavu Rathaiah garu's birthday.",
-            images: ['/bd1.jpeg', '/bd2.jpeg', '/bd3.jpeg', '/bd4.jpeg', '/bd5.jpeg', '/bd6.jpeg', '/bd7.jpeg'],
+            images: ['/bd3.jpeg', '/bd2.jpeg'],
         },
         {
             title: 'Attending SecConf July 2025',
