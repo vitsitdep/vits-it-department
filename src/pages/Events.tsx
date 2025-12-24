@@ -41,7 +41,7 @@ const events: EventsData = {
             title: 'Workshop on AI Ethics and Responsible AI',
             date: '23rd September to  28 September 2025 ',
             description: 'A hands-on workshop on AI Ethics and Responsible AI',
-            images: ['/public/aiw.jpeg'],
+            images: ['/aiw.jpeg'],
         },
         {
             title: 'Zero to Live: Website Creation and Deployment for II and III Year Students',
