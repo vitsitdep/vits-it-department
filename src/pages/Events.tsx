@@ -53,7 +53,7 @@ const events: EventsData = {
             title: 'Workshop On Cloud Computing',
             date: '4th- 6th August 2025',
             description: 'A hands-on workshop on Cloud Computing',
-            images: ['/public/ccpic.png'],
+            images: ['/ccpic.png'],
         },
         {
             title: 'Being part of blood donation camp at VITS',
