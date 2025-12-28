@@ -25,7 +25,8 @@ const Faculty = () => {
       email: "bvchowdary2003@gmail.com",
       publications: "Scopus Journals & Conferences: 33 \n Patents:2",
       awards: "Yuva Acharya Award - 2021",
-      image: "/BV-IT-HOD.jpg"
+      image: "/BV-IT-HOD.jpg",
+      portfolio: "" // Add portfolio links here
     },
     {
       id: 2,
@@ -38,7 +39,8 @@ const Faculty = () => {
       email: "marryprabhakar@gmail.com",
       publications: "Scopus Journals & Conferences: 28 \n Patents:2 \n Book: 1 ",
       awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
-      image: "/public/pp.png"
+      image: "/public/pp.png",
+      portfolio: "https://prabhakarmarry.vercel.app"
     },
     {
       id: 3,
@@ -51,7 +53,8 @@ const Faculty = () => {
       email: "naveen.basava@gmail.com",
       publications: "Scopus Journals & Conferences: 9 \n Books: 4 \n Patents: 5\n \n SCI/SCIE: 1\n",
       awards: "",
-      image: "/nk.jpeg"
+      image: "/nk.jpeg",
+      portfolio: "https://naveenkumarbasava.vercel.app/"
     },
     {
       id: 12,
@@ -64,7 +67,8 @@ const Faculty = () => {
       email: "shivaram1p@gmail.com",
       publications: "Journals & Conferences: 7 \n Patent: 2",
       awards: "",
-      image: "public/srk.jpeg"
+      image: "public/srk.jpeg",
+      portfolio: ""
     },
     {
       id: 4,
@@ -77,7 +81,8 @@ const Faculty = () => {
       email: "khaleel1245@gmail.com",
       publications: "Scopus Journals & Conferences: 16\nBook chapter: 1 ",
       awards: "",
-      image: "/public/sk1.png"
+      image: "/public/sk1.png",
+      portfolio: ""
     },
     {
       id: 5,
@@ -90,7 +95,8 @@ const Faculty = () => {
       email: "arunasrinivas35@gmail.com",
       publications: "Conferences:6\n Patents:1 \n Journal: 2",
       awards: "",
-      image: "/ta.jpeg"
+      image: "/ta.jpeg",
+      portfolio: ""
     },
     {
       id: 6,
@@ -103,7 +109,8 @@ const Faculty = () => {
       email: "jaini.sri@gmail.com",
       publications: "Confernces:2 \n Publications: 1 \n Scopus Journal & Conference:1",
       awards: "",
-      image: "public/srik.png"
+      image: "public/srik.png",
+      portfolio: ""
     },
     {
       id: 7,
@@ -116,7 +123,8 @@ const Faculty = () => {
       email: "akepatisankar@gmail.com",
       publications: " Scopus/UGC Journals & Conferences: 13 \n Patents: 1 ",
       awards: "",
-      image: "/public/asr.png"
+      image: "/public/asr.png",
+      portfolio: "https://akepatisankarreddy.vercel.app"
     },
     {
       id: 8,
@@ -129,7 +137,8 @@ const Faculty = () => {
       email: "msbkasyapa@gmail.com",
       publications: "SCI: 2 \n Scopus Conferences: 2\n Book Chapter:1",
       awards: "",
-      image: "/msb.jpeg"
+      image: "/msb.jpeg",
+      portfolio: "https://msbkasyapa.wixsite.com/msbkasyapa2"
     },
     {
       id: 10,
@@ -142,7 +151,8 @@ const Faculty = () => {
       email: "aimlbsesai@gmail.com",
       publications: "Scopus Journals & Conferences: 2",
       awards: "",
-      image: "/public/vijaya.jpeg"
+      image: "/public/vijaya.jpeg",
+      portfolio: ""
     },
     {
       id: 11,
@@ -155,7 +165,8 @@ const Faculty = () => {
       email: "chanakyaa@vignanits.ac.in",
       publications: "Scopus Conferences: 7 \n Patent: 1 \n Book Chapter: 1",
       awards: "",
-      image: "/public/chan.png"
+      image: "/public/chan.png",
+      portfolio: ""
     },
   ];
 
@@ -358,6 +369,24 @@ const Faculty = () => {
                               <h4 className="text-sm font-semibold text-gray-600 uppercase">Email</h4>
                               <p className="text-gray-700 break-all">{selectedFaculty.email}</p>
                             </div>
+                        )}
+                        {selectedFaculty.portfolio && selectedFaculty.portfolio.trim() ? (
+                          <div>
+                            <h4 className="text-sm font-semibold text-gray-600 uppercase">Portfolio Page</h4>
+                            <a
+                              className="text-blue-600 underline break-all hover:text-blue-800"
+                              href={selectedFaculty.portfolio}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {selectedFaculty.portfolio}
+                            </a>
+                          </div>
+                        ) : (
+                          <div>
+                            <h4 className="text-sm font-semibold text-gray-600 uppercase">Portfolio Page</h4>
+                            <p className="text-gray-400 italic">Coming soon</p>
+                          </div>
                         )}
                       </div>
                     </div>
