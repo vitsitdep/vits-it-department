@@ -140,7 +140,7 @@ const studentAchievements = [
     studentName:
         "MD. Mudassir(23891A1236), G. V. Sri HArsha Ram(23891A1222), P. Bharath Kumar(23891A1244)",
     issuedBy: "CongnitiveX: GenAI HAckathon 2025 (VGNT ECE DEpartment)",
-    topic: "CongnitiveX Hackathon 3rd place",
+    topic: "CongnitiveX Hackathon 2nd place",
     date: "September 2025",
     academicYear: "2025-26",
     count: "03",

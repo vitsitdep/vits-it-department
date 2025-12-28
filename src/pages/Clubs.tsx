@@ -128,7 +128,7 @@ const ngDsdcProjects = [
   {
     name: "NSS- Pranadhara",
     description: "Project for Blood Bank System",
-    students: ["K.Mohith, S. Abhitej", "M. Mudassir", "I. Venkatapathi", "G.V.Sri Harsha Ram"],
+    students: ["K.Mohith", "S. Abhitej", "M. Mudassir", "G.V.Sri Harsha Ram"],
   },
   
 ];
