@@ -169,11 +169,9 @@ const Clubs = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Code className="h-5 w-5" />
-                  NG-DSDC
+                  NextGen-Department Sostware Development Cell (NG-DSDC)
                 </CardTitle>
-                <CardDescription>
-                  Department Software Development Cell (Under NextGen Innovators)
-                </CardDescription>
+                
               </CardHeader>
               <CardContent>
                 <button
