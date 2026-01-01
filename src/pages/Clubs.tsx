@@ -366,7 +366,7 @@ const Clubs = () => {
                             >
                               {dev.role
                                   ? `${dev.name} (${dev.role})`
-                                  : `${dev.name} (${dev.rollNumber}, ${dev.club} Member)`}
+                                  : `${dev.name} (${dev.rollNumber}, ${dev.club})`}
                             </Badge>
                         ))}
                       </div>
