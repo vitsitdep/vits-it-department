@@ -14,6 +14,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Users, Calendar, Code } from "lucide-react";
 
 /* ===================== TYPES ===================== */
@@ -161,6 +168,22 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
     maintainedBy: [], // no maintainers
   },
+  // {
+  //   name: "VAAIT: Vignan Alumni Association for IT Portal",
+  //   description: "Portal for Alumni connect.",
+  //   initialDevelopers: [
+      
+  //     { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+  //     { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
+  //     { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+  //     { name: "K. Mohith", rollNumber: "23891A1231", club: "InfyCoder Club" },
+      
+  //   ],
+  //   maintainedBy: [
+  //     { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
+  //     { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+  //   ], // no maintainers
+  // },
 ];
 
 /* ===================== COMPONENT ===================== */
@@ -323,7 +346,7 @@ const Clubs = () => {
           </DialogContent>
         </Dialog>
 
-        {/* ===== NG-DSDC DIALOG (DEVELOPERS + MAINTAINERS) ===== */}
+        {/* ===== NG-DSDC DIALOG (DEVELOPERS + MAINTAINERS) - SLIDING WINDOW ===== */}
         <Dialog open={showDsdc} onOpenChange={setShowDsdc}>
           <DialogContent className="max-w-5xl p-0 overflow-hidden">
 
@@ -337,62 +360,76 @@ const Clubs = () => {
               </p>
             </div>
 
-            {/* Body */}
-            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50">
-              {ngDsdcProjects.map((project, index) => (
-                  <div
-                      key={index}
-                      className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition"
-                  >
-                    {/* Project Title */}
-                    <h4 className="text-lg font-bold text-department-purple mb-1">
-                      {project.name}
-                    </h4>
+            {/* Body - Sliding Window Carousel */}
+            <div className="p-6 bg-gray-50">
+              <Carousel
+                opts={{
+                  align: "center",
+                  loop: true,
+                }}
+                className="w-full max-w-4xl mx-auto"
+              >
+                <CarouselContent>
+                  {ngDsdcProjects.map((project, index) => (
+                      <CarouselItem key={index} className="md:basis-1/2">
+                        <div className="p-2">
+                          <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition h-full">
+                            {/* Project Title */}
+                            <h4 className="text-lg font-bold text-department-purple mb-1">
+                              {project.name}
+                            </h4>
 
-                    <p className="text-sm text-gray-600 mb-4">
-                      {project.description}
-                    </p>
+                            <p className="text-sm text-gray-600 mb-4">
+                              {project.description}
+                            </p>
 
-                    {/* Initial Developers */}
-                    <div className="mb-4">
-                      <p className="font-semibold text-sm mb-2 text-department-dark">
-                        Initial Developers
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.initialDevelopers.map((dev, i) => (
-                            <Badge
-                                key={i}
-                                className="bg-department-purple/10 text-department-purple"
-                            >
-                              {dev.role
-                                  ? `${dev.name} (${dev.role})`
-                                  : `${dev.name} (${dev.rollNumber}, ${dev.club})`}
-                            </Badge>
-                        ))}
-                      </div>
-                    </div>
+                            {/* Initial Developers */}
+                            <div className="mb-4">
+                              <p className="font-semibold text-sm mb-2 text-department-dark">
+                                Initial Developers
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {project.initialDevelopers.map((dev, i) => (
+                                    <Badge
+                                        key={i}
+                                        className="bg-department-purple/10 text-department-purple text-xs"
+                                    >
+                                      {dev.role
+                                          ? `${dev.name} (${dev.role})`
+                                          : `${dev.name} (${dev.rollNumber}, ${dev.club})`}
+                                    </Badge>
+                                ))}
+                              </div>
+                            </div>
 
-                    {/* Presently Maintained By */}
-                    {project.maintainedBy && project.maintainedBy.length > 0 && (
-                        <div>
-                          <p className="font-semibold text-sm mb-2 text-department-dark">
-                            Presently Maintained By
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {project.maintainedBy.map((dev, i) => (
-                                <Badge
-                                    key={i}
-                                    className="bg-department-blue/10 text-department-blue"
-                                >
-                                  {dev.role
-                                      ? `${dev.name} (${dev.role})`
-                                      : `${dev.name} (${dev.rollNumber}, ${dev.club})`}
-                                </Badge>
-                            ))}
+                            {/* Presently Maintained By */}
+                            {project.maintainedBy && project.maintainedBy.length > 0 && (
+                                <div>
+                                  <p className="font-semibold text-sm mb-2 text-department-dark">
+                                    Presently Maintained By
+                                  </p>
+                                  <div className="flex flex-wrap gap-2">
+                                    {project.maintainedBy.map((dev, i) => (
+                                        <Badge
+                                            key={i}
+                                            className="bg-department-blue/10 text-department-blue text-xs"
+                                        >
+                                          {dev.role
+                                              ? `${dev.name} (${dev.role})`
+                                              : `${dev.name} (${dev.rollNumber}, ${dev.club})`}
+                                        </Badge>
+                                    ))}
+                                  </div>
+                                </div>
+                            )}
                           </div>
-                        </div> )}
-                  </div>
-              ))}
+                        </div>
+                      </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-0" />
+                <CarouselNext className="right-0" />
+              </Carousel>
             </div>
           </DialogContent>
         </Dialog>
