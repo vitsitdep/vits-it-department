@@ -17,7 +17,6 @@ import {
 import { Users, Calendar, Code } from "lucide-react";
 
 /* ===================== TYPES ===================== */
-
 interface Club {
   id: number;
   name: string;
@@ -28,11 +27,14 @@ interface Club {
   color: "purple" | "blue";
   members: number;
   established: string;
-  eventsPdfUrl: string;
+  eventsPdfFileId: string; // Google Drive File ID
 }
 
-/* ===================== CLUB DATA (UNCHANGED) ===================== */
+/* ===================== HELPER ===================== */
+const drivePreview = (fileId: string) =>
+    `https://drive.google.com/file/d/${fileId}/preview`;
 
+/* ===================== CLUB DATA ===================== */
 const clubs: Club[] = [
   {
     id: 1,
@@ -52,7 +54,7 @@ const clubs: Club[] = [
     color: "purple",
     members: 136,
     established: "2022",
-    eventsPdfUrl: "https://drive.google.com/file/d/1leYDfVHaB2WOPtxvc7VcmCEBxNNnXg-j/preview?usp=sharing",
+    eventsPdfFileId: "1uvwWi2ll4bX0ODpw5Uadtpp4gjPqNg-9",
   },
   {
     id: 2,
@@ -70,13 +72,12 @@ const clubs: Club[] = [
     color: "blue",
     members: 120,
     established: "2022",
-    eventsPdfUrl: "https://drive.google.com/file/d/172HJ-zB495p2wXKxO39Mybk5km70qJRW/preview?usp=sharing",
+    eventsPdfFileId: "1Gs1gi0Pm-3hG0S9OUD9PpnSAOBFTTBF1",
   },
   {
     id: 3,
     name: "NextGen",
-    description:
-        "Focused on startups, innovation, and emerging technologies.",
+    description: "Focused on startups, innovation, and emerging technologies.",
     studentCoordinators: [
       "Venkatapathi Babu",
       "Vure Sathvik",
@@ -89,7 +90,7 @@ const clubs: Club[] = [
     color: "purple",
     members: 110,
     established: "2024",
-    eventsPdfUrl: "https://drive.google.com/file/d/1t-FT-DY7sn7YVADqVSeLulDfWtdiMeJZ/preview?usp=sharing",
+    eventsPdfFileId: "1t-FT-DY7sn7YVADqVSeLulDfWtdiMeJZ",
   },
   {
     id: 4,
@@ -101,47 +102,71 @@ const clubs: Club[] = [
     color: "blue",
     members: 136,
     established: "2022",
-    eventsPdfUrl: "https://drive.google.com/file/d/1PFh6l7Qv4F8WfqSRREW9_OeKB59ADAkh/preview?usp=sharing",
+    eventsPdfFileId: "1VDHxRj2ZBSJno3px-PJADDrTrsUkX-Ta",
   },
   {
     id: 5,
     name: "Sports club",
-    description: "A club dedicated to sports, fitness, and athletic events for students.",
+    description:
+        "A club dedicated to sports, fitness, and athletic events for students.",
     studentCoordinators: ["R Saivivek", "S.Harshith kumar", "S.Aishwarya", "K.Asritha", "S. Sadwika"],
     meetingSchedule: "Every Friday, 4:00 PM - 5:30 PM",
     activities: ["Football matches", "Cricket tournaments", "Athletics training"],
     color: "purple",
     members: 136,
     established: "2022",
-    eventsPdfUrl: "https://drive.google.com/file/d/1H_uaDNaBhkwntD2pzIIcwYV0la0ImDNt/preview?usp=sharing",
+    eventsPdfFileId: "1H_uaDNaBhkwntD2pzIIcwYV0la0ImDNt",
   },
 ];
 
 /* ===================== NG-DSDC DATA ===================== */
+interface NgDsdcMember {
+  name: string;
+  role?: string;       // For faculty
+  rollNumber?: string; // For students
+  club?: string;       // For students
+}
 
-const ngDsdcProjects = [
+interface NgDsdcProject {
+  name: string;
+  description: string;
+  initialDevelopers: NgDsdcMember[];
+  maintainedBy: NgDsdcMember[];
+}
+
+const ngDsdcProjects: NgDsdcProject[] = [
   {
     name: "Department Website",
     description: "Official IT department website",
-    students: ["V. Sathvik", "I. Venkatapathi", "K. Nikhil Jai", "B.Mohith Reddy"],
+    initialDevelopers: [
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+      { name: "V. Sathvik", rollNumber: "23891A1264", club: "NextGen Club" },
+      { name: "K. Nikhil Jai", rollNumber: "24895A1203", club: "NextGen Club" },
+      { name: "B. Mohith Reddy", rollNumber: "23891A1211", club: "NextGen Club" },
+    ],
+    maintainedBy: [
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+    ],
   },
   {
-    name: "NSS- Pranadhara",
-    description: "Project for Blood Bank System",
-    students: ["K.Mohith", "S. Abhitej", "M. Mudassir", "G.V.Sri Harsha Ram"],
+    name: "VGNT - NSS – Pranadhara",
+    description: "Project for Vignan Blood Bank System",
+    initialDevelopers: [
+      { name: "K. Mohith", rollNumber: "23891A1231", club: "InfyCoder Club" },
+      { name: "S. Abhitej", rollNumber: "23891A1201", club: "InfyCoder Club" },
+      { name: "M. Mudassir", rollNumber: "23891A1236", club: "SpeakEasy Club" },
+      { name: "G.V.Sri Harsha Ram", rollNumber: "23891A1222", club: "SpeakEasy Club" },
+    ],
+    maintainedBy: [], // no maintainers
   },
-  
 ];
 
 /* ===================== COMPONENT ===================== */
-
 const Clubs = () => {
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
-
-  // 🔥 NEW STATE (only for NG-DSDC)
   const [showDsdc, setShowDsdc] = useState(false);
-
-  // 🔥 NEW STATE for PDF popup
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   return (
@@ -164,19 +189,35 @@ const Clubs = () => {
           <h2 className="text-2xl font-bold text-center text-department-dark mb-8">
             Cells
           </h2>
-          <div className="max-w-md mx-auto">
-            <Card className="border-l-4 border-department-blue bg-blue-50">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Code className="h-5 w-5" />
-                  NextGen-Department Sostware Development Cell (NG-DSDC)
+
+          {/* Increased width */}
+          <div className="max-w-2xl mx-auto">
+            <Card className="border-l-4 border-department-purple bg-purple-50">
+              <CardHeader className="text-center space-y-3">
+
+                {/* Main Heading */}
+                <CardTitle className="text-2xl font-bold text-department-blue">
+                  NextGen-Department Software Development Cell
                 </CardTitle>
-                
+
+                {/* Sub-heading */}
+                <p className="text-lg font-bold text-department-purple">
+                  NG-DSDC
+                </p>
+
+                {/* Full Description */}
+                <CardDescription className="text-gray-700 text-base leading-relaxed">
+                  NG-DSDC focuses on real-time software projects, departmental automation, and hands-on
+                  development experience for students by working on practical,
+                  industry-oriented applications.
+                </CardDescription>
+
               </CardHeader>
-              <CardContent>
+
+              <CardContent className="flex justify-center">
                 <button
                     onClick={() => setShowDsdc(true)}
-                    className="px-6 py-2 rounded-md bg-department-blue text-white hover:opacity-90"
+                    className="px-8 py-2 rounded-md bg-department-purple text-white hover:opacity-90"
                 >
                   View Projects & Students
                 </button>
@@ -184,6 +225,7 @@ const Clubs = () => {
             </Card>
           </div>
         </div>
+
 
         {/* ===== CLUBS SECTION ===== */}
         <div className="container mx-auto px-4 py-8">
@@ -236,13 +278,11 @@ const Clubs = () => {
           </div>
         </div>
 
-        {/* ===== CLUB DETAILS DIALOG (UNCHANGED) ===== */}
+        {/* ===== CLUB DETAILS DIALOG ===== */}
         <Dialog open={!!selectedClub} onOpenChange={() => setSelectedClub(null)}>
           <DialogContent className="max-w-3xl">
             <DialogHeader>
-              <DialogTitle className="text-2xl">
-                {selectedClub?.name}
-              </DialogTitle>
+              <DialogTitle className="text-2xl">{selectedClub?.name}</DialogTitle>
             </DialogHeader>
 
             {selectedClub && (
@@ -273,7 +313,7 @@ const Clubs = () => {
                   </div>
 
                   <button
-                      onClick={() => setPdfUrl(selectedClub.eventsPdfUrl)}
+                      onClick={() => setPdfUrl(drivePreview(selectedClub.eventsPdfFileId))}
                       className="inline-block mt-4 px-6 py-2 rounded-md bg-department-purple text-white hover:opacity-90"
                   >
                     View Events (PDF)
@@ -283,39 +323,80 @@ const Clubs = () => {
           </DialogContent>
         </Dialog>
 
-        {/* ===== NG-DSDC DIALOG ===== */}
+        {/* ===== NG-DSDC DIALOG (DEVELOPERS + MAINTAINERS) ===== */}
         <Dialog open={showDsdc} onOpenChange={setShowDsdc}>
-          <DialogContent className="max-w-4xl">
-            <DialogHeader>
-              <DialogTitle className="text-2xl">
-                NG-DSDC – Software Development Cell
-              </DialogTitle>
-            </DialogHeader>
+          <DialogContent className="max-w-5xl p-0 overflow-hidden">
 
-            <div className="space-y-4">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-department-purple to-department-blue p-6 text-white">
+              <h2 className="text-2xl font-bold text-center">
+                NextGen-Software Development Cell (NG-DSDC)
+              </h2>
+              <p className="text-center text-sm opacity-90 mt-1">
+                Student-driven real-time software projects
+              </p>
+            </div>
+
+            {/* Body */}
+            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50">
               {ngDsdcProjects.map((project, index) => (
                   <div
                       key={index}
-                      className="border rounded-md p-4 bg-gray-50"
+                      className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition"
                   >
-                    <h4 className="font-semibold">{project.name}</h4>
-                    <p className="text-sm text-gray-600 mb-2">
+                    {/* Project Title */}
+                    <h4 className="text-lg font-bold text-department-purple mb-1">
+                      {project.name}
+                    </h4>
+
+                    <p className="text-sm text-gray-600 mb-4">
                       {project.description}
                     </p>
 
-                    <p className="text-sm font-medium">
-                      Participated Students:
-                    </p>
-                    <ul className="list-disc pl-5 text-sm">
-                      {project.students.map((s, i) => (
-                          <li key={i}>{s}</li>
-                      ))}
-                    </ul>
+                    {/* Initial Developers */}
+                    <div className="mb-4">
+                      <p className="font-semibold text-sm mb-2 text-department-dark">
+                        Initial Developers
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.initialDevelopers.map((dev, i) => (
+                            <Badge
+                                key={i}
+                                className="bg-department-purple/10 text-department-purple"
+                            >
+                              {dev.role
+                                  ? `${dev.name} (${dev.role})`
+                                  : `${dev.name} (${dev.rollNumber}, ${dev.club} Member)`}
+                            </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Presently Maintained By */}
+                    {project.maintainedBy && project.maintainedBy.length > 0 && (
+                        <div>
+                          <p className="font-semibold text-sm mb-2 text-department-dark">
+                            Presently Maintained By
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {project.maintainedBy.map((dev, i) => (
+                                <Badge
+                                    key={i}
+                                    className="bg-department-blue/10 text-department-blue"
+                                >
+                                  {dev.role
+                                      ? `${dev.name} (${dev.role})`
+                                      : `${dev.name} (${dev.rollNumber}, ${dev.club}) Member`}
+                                </Badge>
+                            ))}
+                          </div>
+                        </div> )}
                   </div>
               ))}
             </div>
           </DialogContent>
         </Dialog>
+
 
         {/* ===== PDF VIEWER DIALOG ===== */}
         <Dialog open={!!pdfUrl} onOpenChange={() => setPdfUrl(null)}>
@@ -324,13 +405,13 @@ const Clubs = () => {
               <DialogTitle className="text-2xl">Events PDF</DialogTitle>
             </DialogHeader>
             {pdfUrl && (
-              <iframe
-                src={pdfUrl}
-                width="100%"
-                height="600px"
-                style={{ border: 'none' }}
-                title="Events PDF"
-              />
+                <iframe
+                    src={pdfUrl}
+                    width="100%"
+                    height="600px"
+                    style={{ border: "none" }}
+                    title="Events PDF"
+                />
             )}
           </DialogContent>
         </Dialog>
