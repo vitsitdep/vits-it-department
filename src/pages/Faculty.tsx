@@ -26,7 +26,7 @@ const Faculty = () => {
       publications: "Scopus Journals & Conferences: 33 \n Patents:2",
       awards: "Yuva Acharya Award - 2021",
       image: "/BV-IT-HOD.jpg",
-      portfolio: "" // Add portfolio links here
+      portfolio: "https://bvchowdary.vercel.app" // Add portfolio links here
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ const Faculty = () => {
       publications: "Scopus Journals & Conferences: 28 \n Patents:2 \n Book: 1 ",
       awards: "Faculty Eligibility Test(FET JNTUH)- 2011",
       image: "/public/pp.png",
-      portfolio: "https://prabhakarmarry.vercel.app"
+      portfolio: "https://prabhakar-one.vercel.app"
     },
     {
       id: 3,
@@ -82,7 +82,7 @@ const Faculty = () => {
       publications: "Scopus Journals & Conferences: 16\nBook chapter: 1 ",
       awards: "",
       image: "/public/sk1.png",
-      portfolio: ""
+      portfolio: "https://khaleelullah.vercel.app"
     },
     {
       id: 5,
@@ -110,7 +110,7 @@ const Faculty = () => {
       publications: "Confernces:2 \n Publications: 1 \n Scopus Journal & Conference:1",
       awards: "",
       image: "public/srik.png",
-      portfolio: ""
+      portfolio: "htpps://j-srikanth.vercel.app"
     },
     {
       id: 7,
@@ -152,7 +152,7 @@ const Faculty = () => {
       publications: "Scopus Journals & Conferences: 2",
       awards: "",
       image: "/public/vijaya.jpeg",
-      portfolio: ""
+      portfolio: "https://sai-vijaya.vercel.app"
     },
     {
       id: 11,
@@ -166,7 +166,7 @@ const Faculty = () => {
       publications: "Scopus Conferences: 7 \n Patent: 1 \n Book Chapter: 1",
       awards: "",
       image: "/public/chan.png",
-      portfolio: ""
+      portfolio: "https://chanakya-eta.vercel.app"
     },
   ];
 
