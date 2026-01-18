@@ -48,7 +48,7 @@ const events: EventsData = {
             title: 'Algorand Arambham',
             date: '13th October 2025 ',
             description: 'ABC-VITS chapter launch and a workshop on Blockchain.',
-            images: ['/image.png','/image copy.png'],
+            images: ['/public/image.png','/public/imagecopy.png'],
         },
         {
             title: 'Workshop on AI Ethics and Responsible AI',
