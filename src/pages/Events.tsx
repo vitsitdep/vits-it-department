@@ -37,11 +37,18 @@ const events: EventsData = {
         },
     ],
     past: [
+        
         {
-            title: ' Attending FoundersFest',
+            title: ' Attending FoundersFest 2025',
             date: '31st December 2025 ',
-            description: 'A expo for startups.',
+            description: 'Students attended an expo for startups.',
             images: ['/IMG-20251231-WA0018.jpg'],
+        },
+        {
+            title: 'Algorand Arambham',
+            date: '13th October 2025 ',
+            description: 'ABC-VITS chapter launch and a workshop on Blockchain.',
+            images: ['/image.png','/image copy.png'],
         },
         {
             title: 'Workshop on AI Ethics and Responsible AI',
