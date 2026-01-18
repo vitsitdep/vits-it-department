@@ -38,6 +38,12 @@ const events: EventsData = {
     ],
     past: [
         {
+            title: ' Attending FoundersFest',
+            date: '31st December 2025 ',
+            description: 'A expo for startups.',
+            images: ['/IMG-20251231-WA0018.jpg'],
+        },
+        {
             title: 'Workshop on AI Ethics and Responsible AI',
             date: '23rd September to  28 September 2025 ',
             description: 'A hands-on workshop on AI Ethics and Responsible AI',
