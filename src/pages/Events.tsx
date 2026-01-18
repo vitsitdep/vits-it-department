@@ -56,11 +56,18 @@ const events: EventsData = {
             description: 'A hands-on workshop on AI Ethics and Responsible AI',
             images: ['/aiw.jpeg'],
         },
+
         {
             title: 'Zero to Live: Website Creation and Deployment for II and III Year Students',
             date: '18th - 21st August 2025 and July 28 to July 30, 2025',
             description: 'A hands-on workshop for II & III Year students to learn website creation and deployment.',
             images: ['/w31.jpeg', '/w32.jpeg', '/w33.jpeg', '/w34.jpeg', '/w35.jpeg'],
+        },
+        {
+            title: 'Cardano India Codex 2025',
+            date: '20th September 2025',
+            description: 'A hands-on session on Blockchain x AI.',
+            images: ['/image copy 2.png'],
         },
         {
             title: 'Workshop On Cloud Computing',
