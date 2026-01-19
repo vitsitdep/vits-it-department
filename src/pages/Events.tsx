@@ -48,7 +48,7 @@ const events: EventsData = {
             title: 'Algorand Arambham',
             date: '13th October 2025 ',
             description: 'ABC-VITS chapter launch and a workshop on Blockchain.',
-            images: ['/image.png','/imagecopy.png'],
+            images: ['/public/IMG-20251013-WA0032.jpg','/public/IMG-20251013-WA0034.jpg'],
         },
         {
             title: 'Workshop on AI Ethics and Responsible AI',
@@ -67,7 +67,7 @@ const events: EventsData = {
             title: 'Cardano India Codex 2025',
             date: '20th September 2025',
             description: 'A hands-on session on Blockchain x AI.',
-            images: ['/imagecopy2.png'],
+            images: ['/public/IMG-20250920-WA0168.jpg'],
         },
         {
             title: 'Workshop On Cloud Computing',
