@@ -24,7 +24,7 @@ const Faculty = () => {
       specialization: "Data Mining, Machine Learning",
       email: "bvchowdary2003@gmail.com",
       publications: "Scopus Journals & Conferences: 13 \n Patents:2",
-      awards: "Yuva Acharya Award\n\n2021 NPTEL Discipline Star",
+      awards: "Yuva Acharya Award\n\n     2021 NPTEL Discipline Star",
       image: "/BV-IT-HOD.jpg",
       portfolio: "https://bvchowdary.vercel.app" // Add portfolio links here
     },
