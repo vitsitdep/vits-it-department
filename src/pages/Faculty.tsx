@@ -24,7 +24,7 @@ const Faculty = () => {
       specialization: "Data Mining, Machine Learning",
       email: "bvchowdary2003@gmail.com",
       publications: "Scopus Journals & Conferences: 13 \n Patents:2",
-      awards: "Yuva Acharya Award\n\n     2021 NPTEL Discipline Star",
+      awards: "Yuva Acharya Award 2021\nNPTEL Discipline Star",
       image: "/BV-IT-HOD.jpg",
       portfolio: "https://bvchowdary.vercel.app" // Add portfolio links here
     },
@@ -434,7 +434,11 @@ const Faculty = () => {
                       {selectedFaculty.awards && String(selectedFaculty.awards).trim() && (
                         <div className="bg-orange-50 p-4 rounded-lg">
                           <h4 className="text-sm font-semibold text-gray-600 uppercase mb-2">Awards</h4>
-                          <Badge className="bg-orange-600 text-white">{selectedFaculty.awards}</Badge>
+                          <div className="flex flex-col gap-2">
+                            {String(selectedFaculty.awards).split('\n').map((award, idx) => (
+                              <Badge key={idx} className="bg-orange-600 text-white w-fit">{award}</Badge>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
