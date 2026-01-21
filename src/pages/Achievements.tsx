@@ -154,6 +154,15 @@ const studentAchievements = [
     academicYear: "2025-26",
     count: "04",
   },
+  {
+    studentName:
+        "R. Khyathi Pradha(22891A1247)",
+    issuedBy: "mygate",
+    topic: "Internship",
+    date: "January 2026",
+    academicYear: "2025-26",
+    count: "01",
+  },
 ];
 
 const Achievements = () => {
