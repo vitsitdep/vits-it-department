@@ -97,7 +97,7 @@ const clubs: Club[] = [
     color: "purple",
     members: 110,
     established: "2024",
-    eventsPdfFileId: "1t-FT-DY7sn7YVADqVSeLulDfWtdiMeJZ",
+    eventsPdfFileId: "1qRcOZf_2QIbNAqWdMOQ73b3F3FDXnm1D",
   },
   {
     id: 4,
