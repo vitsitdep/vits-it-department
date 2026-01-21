@@ -10,7 +10,7 @@ const newsletters = [
 	{
 		volume: "Volume 2",
 		cover: "/nl.png",
-		pdf: "https://drive.google.com/file/d/1-JHobfn7eTkcFMTrUYcRAk5oH3EWKih9/view?usp=sharing", // Replace with actual Google Drive link
+		pdf: "https://drive.google.com/file/d/1Dva0vf4u9wf1ET43BqbR3itn2vp1Miev/view?usp=sharing", // Replace with actual Google Drive link
 		date: "January 2025 to June 2025",
 		description:
 			"Second edition with research spotlights, club activities, and placement success stories.",
