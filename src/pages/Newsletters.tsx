@@ -18,7 +18,7 @@ const newsletters = [
 	{
 		volume: "Volume 1",
 		cover: "/nl.png",
-		pdf: "https://drive.google.com/file/d/16ENGb6drxbzul8fK0s-nAaU0Vyhz848Z/view?usp=sharing", // Replace with actual Google Drive link
+		pdf: "https://drive.google.com/file/d/1NF8vu2r-MJ2_uWaTWuzXUITyoofQttW1/view?usp=sharing", // Replace with actual Google Drive link
 		date: "July 2024 to December 2024",
 		description:
 			"Inaugural edition featuring department highlights, student achievements, and industry collaborations.",
