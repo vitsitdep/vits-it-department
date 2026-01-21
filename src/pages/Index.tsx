@@ -63,7 +63,7 @@ const Index = () => {
                 Placement Insights
               </h3>
               <img 
-                src="/pr.jpeg" 
+                src="/public/ChatGPT Image Jan 21, 2026, 10_44_38 PM.png" 
                 alt="IT Department" 
                 className="rounded-lg shadow-2xl w-full h-auto transform-gpu will-change-auto"
               />
