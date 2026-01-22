@@ -161,12 +161,88 @@ const Index = () => {
 
               </TabsContent>
               <TabsContent value="po-upto-2023" className="mt-6">
-                <p className="text-gray-600 italic mb-4">[Content to be updated]</p>
                 <dl className="text-lg space-y-6">
                   <div>
-                    <dt className="font-bold text-indigo-600">Program Outcomes (Upto 2023)</dt>
+                    <dt className="font-bold text-indigo-600">PO1: Engineering Knowledge</dt>
                     <dd className="text-gray-700">
-                      The Program Outcomes for students who enrolled upto 2023 are being updated. Please check back later for the complete details.
+                      Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO2: Problem Analysis</dt>
+                    <dd className="text-gray-700">
+                      Identify, formulate, review, research, literature and analyze complex engineering problems reaching substantiated conclusions using the first principle of mathematics, natural science and engineering science.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO3: Design/Development of Solutions</dt>
+                    <dd className="text-gray-700">
+                      Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and the cultural, societal, and environmental.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO4: Conduct Investigations of Complex Problems</dt>
+                    <dd className="text-gray-700">
+                      Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO5: Modern Tool Usage</dt>
+                    <dd className="text-gray-700">
+                      Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modelling to complex engineering activities with an understanding of the limitations.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO6: The Engineer and Society</dt>
+                    <dd className="text-gray-700">
+                      Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO7: Environment and Sustainability</dt>
+                    <dd className="text-gray-700">
+                      Understand the impact of professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO8: Ethics</dt>
+                    <dd className="text-gray-700">
+                      Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO9: Individual and Team Work</dt>
+                    <dd className="text-gray-700">
+                      Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO10: Communication</dt>
+                    <dd className="text-gray-700">
+                      Communicate effectively on complex engineering activities with the engineering community and with society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO11: Project Management and Finance</dt>
+                    <dd className="text-gray-700">
+                      Demonstrate knowledge and understanding of the engineering and management principles and apply these to one's own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO12: Life-Long Learning</dt>
+                    <dd className="text-gray-700">
+                      Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
                     </dd>
                   </div>
                 </dl>
