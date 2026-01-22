@@ -100,10 +100,14 @@ const Index = () => {
               Department Goals
             </Button>
             <Tabs defaultValue="vision-mission">
-              <TabsList className="flex justify-center space-x-4">
+              <TabsList className="flex justify-center space-x-4 flex-wrap">
                 <TabsTrigger value="vision-mission" className="px-4 py-2 text-lg font-semibold text-department-purple border-b-2 border-transparent hover:border-department-purple">Vision & Mission</TabsTrigger>
 
                 <TabsTrigger value="pso" className="px-4 py-2 text-lg font-semibold text-department-blue text-department-green border-b-2 border-transparent hover:border-department-green">Program Specific Outcomes</TabsTrigger>
+
+                <TabsTrigger value="po-upto-2023" className="px-4 py-2 text-lg font-semibold text-department-purple border-b-2 border-transparent hover:border-department-purple">Program Outcomes upto 2023</TabsTrigger>
+
+                <TabsTrigger value="po-from-2024" className="px-4 py-2 text-lg font-semibold text-department-blue border-b-2 border-transparent hover:border-department-blue">Program Outcomes from 2024</TabsTrigger>
               </TabsList>
               <TabsContent value="vision-mission" className="mt-6 space-y-6">
                 <div>
@@ -155,6 +159,97 @@ const Index = () => {
                   </div>
                 </dl>
 
+              </TabsContent>
+              <TabsContent value="po-upto-2023" className="mt-6">
+                <p className="text-gray-600 italic mb-4">[Content to be updated]</p>
+                <dl className="text-lg space-y-6">
+                  <div>
+                    <dt className="font-bold text-indigo-600">Program Outcomes (Upto 2023)</dt>
+                    <dd className="text-gray-700">
+                      The Program Outcomes for students who enrolled upto 2023 are being updated. Please check back later for the complete details.
+                    </dd>
+                  </div>
+                </dl>
+              </TabsContent>
+              <TabsContent value="po-from-2024" className="mt-6">
+                <dl className="text-lg space-y-6">
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO1: Engineering Knowledge</dt>
+                    <dd className="text-gray-700">
+                      Apply knowledge of mathematics, natural science, computing, engineering fundamentals and an engineering specialization as specified from WK1 to WK4 respectively to develop the solution of complex engineering problems.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO2: Problem Analysis</dt>
+                    <dd className="text-gray-700">
+                      Identify, formulate, review research literature and analyze complex engineering problems reaching substantiated conclusions with consideration for sustainable development. (WK1 to WK4)
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO3: Design/Development of Solutions</dt>
+                    <dd className="text-gray-700">
+                      Design creative solutions for complex engineering problems and design/develop systems/components/processes to meet identified needs with consideration for the public health and safety, whole-life cost, net zero carbon, culture, society and environment as required. (WK5)
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO4: Conduct Investigations of Complex Problems</dt>
+                    <dd className="text-gray-700">
+                      Conduct investigations of complex engineering problems using research-based knowledge including design of experiments, modelling, analysis & interpretation of data to provide valid conclusions. (WK8)
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO5: Engineering Tool Usage</dt>
+                    <dd className="text-gray-700">
+                      Create, select and apply appropriate techniques, resources and modern engineering & IT tools, including prediction and modelling recognizing their limitations to solve complex engineering problems. (WK2 and WK6)
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO6: The Engineer and the World</dt>
+                    <dd className="text-gray-700">
+                      Analyze and evaluate societal and environmental aspects while solving complex engineering problems for its impact on sustainability with reference to economy, health, safety, legal framework, culture and environment. (WK1, WK5, and WK7).
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO7: Ethics</dt>
+                    <dd className="text-gray-700">
+                      Apply ethical principles and commit to professional ethics, human values, diversity and inclusion; adhere to national & international laws. (WK9)
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO8: Individual and Collaborative Team work</dt>
+                    <dd className="text-gray-700">
+                      Function effectively as an individual, and as a member or leader in diverse/multi-disciplinary teams.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO9: Communication</dt>
+                    <dd className="text-gray-700">
+                      Communicate effectively and inclusively within the engineering community and society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations considering cultural, language, and learning differences.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO10: Project Management and Finance</dt>
+                    <dd className="text-gray-700">
+                      Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one's own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments.
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-bold text-indigo-600">PO11: Life-Long Learning</dt>
+                    <dd className="text-gray-700">
+                      Recognize the need for, and have the preparation and ability for i) independent and life-long learning ii) adaptability to new and emerging technologies and iii) critical thinking in the broadest context of technological change. (WK8)
+                    </dd>
+                  </div>
+                </dl>
               </TabsContent>
             </Tabs>
           </div>

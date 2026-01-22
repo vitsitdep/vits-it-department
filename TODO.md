@@ -1,15 +1,18 @@
-# TODO: NG-DSDC Sliding Window Implementation
+# TODO: Add Program Outcomes Sections to Index.tsx
 
-## Step 1: Import Carousel Components ✅
-- Import Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext from ui/carousel
+## Task: Add two new tabs for Program Outcomes
 
-## Step 2: Modify NG-DSDC Dialog ✅
-- Replace grid layout with Carousel-based sliding window
-- Show projects as carousel items with navigation arrows
+### Steps Completed:
+- [x] Explore project structure and locate Index.tsx
+- [x] Read and analyze current Index.tsx content
+- [x] Identify Tabs component structure
+- [x] Gather requirements from user
+- [x] Create plan and get user approval
+- [x] Add two new TabsTrigger components
+- [x] Add TabsContent for "Program Outcomes upto 2023" (placeholder)
+- [x] Add TabsContent for "Program Outcomes from 2024" with all 11 POs
 
-## Step 3: Styling ✅
-- Maintain existing visual design (colors, badges)
-- Add smooth carousel transitions
-
-## Status: Completed ✅
+### Notes:
+- "Program Outcomes upto 2023": Placeholder added, user will update later
+- "Program Outcomes from 2024": Full PO1-PO11 content as provided by user
 
