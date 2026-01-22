@@ -235,7 +235,7 @@ const IndustryInteraction = () => {
       title: 'IIT Madras Diploma Course ',
       organization: 'IIT Madras',
       date: 'April 30, 2025',
-      certificates: ['/sf.jpeg'],
+      certificates: ['/download.png'],
       participants: [
         { studentName: 'Idukuda Venkatapathi Babu', rollNumber: '23891A1225' },
       ],
