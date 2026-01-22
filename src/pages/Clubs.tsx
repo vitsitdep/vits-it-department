@@ -61,7 +61,7 @@ const clubs: Club[] = [
     color: "purple",
     members: 136,
     established: "2022",
-    eventsPdfFileId: "1uvwWi2ll4bX0ODpw5Uadtpp4gjPqNg-9",
+    eventsPdfFileId: "1VfPcg3jXsd9P77Sq0MQ5iv_o7gqImuvv",
   },
   {
     id: 2,
@@ -109,7 +109,7 @@ const clubs: Club[] = [
     color: "blue",
     members: 136,
     established: "2022",
-    eventsPdfFileId: "1VDHxRj2ZBSJno3px-PJADDrTrsUkX-Ta",
+    eventsPdfFileId: "1nJ2VAvar5XwalYJJcq_En8H9OmLwcipH",
   },
   {
     id: 5,
@@ -122,7 +122,7 @@ const clubs: Club[] = [
     color: "purple",
     members: 136,
     established: "2022",
-    eventsPdfFileId: "1H_uaDNaBhkwntD2pzIIcwYV0la0ImDNt",
+    eventsPdfFileId: "1JZyhAt14LgRf_oNhVrWZ5MUvjwzcui1W",
   },
 ];
 
