@@ -30,7 +30,7 @@ const events: EventsData = {
         
          {
             title: 'Alumni Meet',
-            date: '31st January 2026',
+            date: '7th February 2026',
             type: 'Meet',
             participants: 'Alumni',
             organisedby: 'Department of IT',
