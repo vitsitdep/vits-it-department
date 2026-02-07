@@ -49,12 +49,12 @@ const clubs: Club[] = [
     description:
         "A programming club focused on competitive coding, algorithms, and problem solving.",
     studentCoordinators: [
-      "A K V S Chakravarthy",
-      "Pittala Shrenik Kumar",
-      "Bakuna Amulya",
-      "R Khyathi Pradha",
-      "Shaik Farha Begum",
-      "Kanteti Jaya Chandra",
+      "Mohith",
+"Meghana",
+"Sri ram",
+"SreeRaga",
+"Abhitej",
+"Chandana",
     ],
     meetingSchedule: "Every Saturday, 2:00 PM - 3:30 PM",
     activities: ["Coding Challenges", "Hackathons", "Guest Lectures"],
@@ -68,11 +68,12 @@ const clubs: Club[] = [
     name: "SpeakEasy Club",
     description: "A club focused on improving communication and verbal skills.",
     studentCoordinators: [
-      "M. Sai Rishitha",
-      "JM. Praneetha",
-      "M. Sai Rithika",
-      "C. Navya Sri",
-      "V. Sathvika",
+      "D.likitha sri",
+"A.vijaya neha",
+"B.rishika",
+"G.V.Sri harsha ram",
+"ch. chandu",
+"md.mudassir",
     ],
     meetingSchedule: "Every Tuesday, 3:30 PM - 5:30 PM",
     activities: ["JAM Sessions", "Presentations", "Social Awareness"],
@@ -88,7 +89,7 @@ const clubs: Club[] = [
     studentCoordinators: [
       "Venkatapathi Babu",
       "Vure Sathvik",
-      "Md. Mudassir",
+      "B. Mohith",
       "K. Rakesh Reddy",
       "K. Nikhil Jai",
     ],
@@ -103,7 +104,14 @@ const clubs: Club[] = [
     id: 4,
     name: "Arts Club",
     description: "A club that unleashes the artistic you.",
-    studentCoordinators: ["D.suraj", "Sk.muskan", "K.vijitha", "K.balaji", "V.charvitha"],
+    studentCoordinators: [
+"V.Sreeraga",
+"Shaik Aifaz",
+"Harika",
+"Shivani",
+"Vinay",
+"Poojitha",
+    ],
     meetingSchedule: "Every Thursday, 3:30 PM - 5:00 PM",
     activities: ["Poster making", "Drawing competitions", "Quizzes"],
     color: "blue",
@@ -116,7 +124,14 @@ const clubs: Club[] = [
     name: "Sports club",
     description:
         "A club dedicated to sports, fitness, and athletic events for students.",
-    studentCoordinators: ["R Saivivek", "S.Harshith kumar", "S.Aishwarya", "K.Asritha", "S. Sadwika"],
+    studentCoordinators: [
+      "G.Sandeep",
+      "B.John",
+      "D.Sri Hari",
+      "D.Dinesh",
+      "G.Sampath",
+      "A.Vishank",
+    ],
     meetingSchedule: "Every Friday, 4:00 PM - 5:30 PM",
     activities: ["Football matches", "Cricket tournaments", "Athletics training"],
     color: "purple",
@@ -168,22 +183,23 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
     maintainedBy: [], // no maintainers
   },
-  // {
-  //   name: "VAAIT: Vignan Alumni Association for IT Portal",
-  //   description: "Portal for Alumni connect.",
-  //   initialDevelopers: [
+  {
+    name: "VAAIT: Vignan Alumni Association for IT Portal",
+    description: "Portal for Alumni connect.",
+    initialDevelopers: [
       
-  //     { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
-  //     { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
-  //     { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
-  //     { name: "K. Mohith", rollNumber: "23891A1231", club: "InfyCoder Club" },
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
+      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Innovators" },
+      { name: "V. Sathvik", rollNumber: "23891A1264", club: "NextGen Innovators" },
+      { name: "K. Nikhil jai", rollNumber: "24895A1203", club: "NextGen Innovators" },
       
-  //   ],
-  //   maintainedBy: [
-  //     { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
-  //     { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
-  //   ], // no maintainers
-  // },
+    ],
+    maintainedBy: [
+      { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
+      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+    ], // no maintainers
+  },
 ];
 
 /* ===================== COMPONENT ===================== */

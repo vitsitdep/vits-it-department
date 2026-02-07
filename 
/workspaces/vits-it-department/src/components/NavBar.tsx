@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Menu, ArrowUpRight } from 'lucide-react';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,8 +33,7 @@ const NavBar = () => {
     { path: '/placements', label: 'Placements' },
     { path: '/events', label: 'Events' },
     { path: '/newsletters', label: 'Newsletters' },
-    { path: '/contact', label: 'Contact' },
-    { path: 'https://vits-it-alumni-portal.vercel.app', label: 'Alumni↗', external: true }
+    { path: '/contact', label: 'Contact' }
   ];
 
   return (
@@ -52,29 +52,27 @@ const NavBar = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
-              link.external ? (
-                <a 
-                  key={link.path}
-                  href={link.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative px-2 py-1 text-md font-medium text-white/80 hover:text-white"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link 
-                  key={link.path} 
-                  to={link.path} 
-                  className={`relative px-2 py-1 text-md font-medium ${isActive(link.path) ? 'text-white' : 'text-white/80 hover:text-white'}`}
-                >
-                  {link.label}
-                  <span 
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 bg-white transform origin-left transition-transform duration-300 ${isActive(link.path) ? 'scale-x-100' : 'scale-x-0 hover:scale-x-100'}`}
-                  />
-                </Link>
-              )
+              <Link 
+                key={link.path} 
+                to={link.path} 
+                className={`relative px-2 py-1 text-md font-medium ${isActive(link.path) ? 'text-white' : 'text-white/80 hover:text-white'}`}
+              >
+                {link.label}
+                <span 
+                  className={`absolute left-0 right-0 bottom-0 h-0.5 bg-white transform origin-left transition-transform duration-300 ${isActive(link.path) ? 'scale-x-100' : 'scale-x-0 hover:scale-x-100'}`}
+                />
+              </Link>
             ))}
+            {/* Alumni External Link with Arrow */}
+            <a 
+              href="https://vits-it-alumni-portal.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative px-2 py-1 text-md font-medium text-white/80 hover:text-white flex items-center gap-1"
+            >
+              Alumni
+              <ArrowUpRight size={16} className="inline-block" />
+            </a>
           </div>
           {/* Mobile Nav Overlay using Portal */}
           {isMenuOpen && typeof window !== 'undefined' && createPortal(
@@ -91,28 +89,26 @@ const NavBar = () => {
                   </svg>
                 </button>
                 {navLinks.map((link) => (
-                  link.external ? (
-                    <a 
-                      key={link.path}
-                      href={link.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-lg font-semibold py-3 px-4 rounded transition-colors duration-200 text-white/90 hover:bg-department-blue/80 hover:text-white"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link 
-                      key={link.path} 
-                      to={link.path} 
-                      className={`block w-full text-lg font-semibold py-3 px-4 rounded transition-colors duration-200 ${isActive(link.path) ? 'bg-department-blue text-white' : 'text-white/90 hover:bg-department-blue/80 hover:text-white'}`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  )
+                  <Link 
+                    key={link.path} 
+                    to={link.path} 
+                    className={`block w-full text-lg font-semibold py-3 px-4 rounded transition-colors duration-200 ${isActive(link.path) ? 'bg-department-blue text-white' : 'text-white/90 hover:bg-department-blue/80 hover:text-white'}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
                 ))}
+                {/* Alumni External Link for Mobile */}
+                <a 
+                  href="https://vits-it-alumni-portal.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-lg font-semibold py-3 px-4 rounded transition-colors duration-200 text-white/90 hover:bg-department-blue/80 hover:text-white flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Alumni
+                  <ArrowUpRight size={18} />
+                </a>
               </div>
             </>,
             document.body
@@ -124,3 +120,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
