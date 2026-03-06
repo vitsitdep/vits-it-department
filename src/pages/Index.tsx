@@ -113,7 +113,7 @@ const Index = () => {
                 <div>
                   <h2 className="text-2xl font-semibold text-blue-700 mb-2">Vision</h2>
                   <p className="text-gray-700 text-lg">
-                    To emerge as a premier center for education and research in computer science and engineering and in transforming students into innovative professionals of contemporary and future technologies to cater the global needs of human resources for IT and ITES companies.
+                    The department aims to produce globally competent graduates to meet the ever changing needs of the IT industry through contemporary knowledge and moral values.
                   </p>
                 </div>
 
@@ -121,16 +121,16 @@ const Index = () => {
                   <h2 className="text-2xl font-semibold text-blue-700 mb-2">Mission</h2>
                   <ul className="list-disc pl-6 text-gray-700 text-lg space-y-2">
                     <li>
-                      To produce excellent computer science professionals by imparting quality training, hands-on experience, and value-based education.
+                      Provide a holistic learning environment to students for professional development and ethical practices.
                     </li>
                     <li>
-                      To strengthen links with industry through collaborative partnerships in research & product development and student internships.
+                      Train the students to be industry ready and to have multidisciplinary skills as an individual and as a team.
                     </li>
                     <li>
-                      To promote research-based projects and activities among the students in the emerging areas of technology.
+                      To impart skills beyond university prescribed to transform students into a well- rounded IT professional.
                     </li>
                     <li>
-                      To explore opportunities for skill development in the application of computer science among rural and underprivileged populations.
+                      To continuously engage in research and projects development, use of emerging technologies to attain self-sustainability.
                     </li>
                   </ul>
                 </div>
