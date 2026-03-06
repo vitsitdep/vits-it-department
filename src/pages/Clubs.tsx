@@ -181,7 +181,10 @@ const ngDsdcProjects: NgDsdcProject[] = [
       { name: "M. Mudassir", rollNumber: "23891A1236", club: "SpeakEasy Club" },
       { name: "G.V.Sri Harsha Ram", rollNumber: "23891A1222", club: "SpeakEasy Club" },
     ],
-    maintainedBy: [], // no maintainers
+    maintainedBy: [
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
+    ], // no maintainers
   },
   {
     name: "VAAIT: Vignan Alumni Association for IT Portal",
