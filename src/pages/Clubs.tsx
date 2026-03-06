@@ -173,6 +173,21 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
   },
   {
+    name: "IT-Services",
+    description: "Official IT Services website",
+    initialDevelopers: [
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "K. Mohith", rollNumber: "23891A1231", club: "Coding Club" },
+      { name: "Md. Mudassir", rollNumber: "23891A1236", club: "Coding Club" },
+      { name: "G.V. Harsha Ram", rollNumber: "24895A1222", club: "Coding Club" },
+      { name: "S. Abhitej", rollNumber: "23891A1201", club: "Coding Club" },
+    ],
+    maintainedBy: [
+      { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
+      { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
+    ],
+  },
+  {
     name: "VGNT - NSS – Pranadhara",
     description: "Project for Vignan Blood Bank System",
     initialDevelopers: [
@@ -183,7 +198,7 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
     maintainedBy: [
       { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
-  
+      {name: "Md Mudassir", rollNumber: "23891A1236", club: "Speakeasy Club" },
     ], // no maintainers
   },
   {
