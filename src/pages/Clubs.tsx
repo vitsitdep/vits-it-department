@@ -169,7 +169,7 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
     maintainedBy: [
       { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
-      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+      { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
     ],
   },
   {
