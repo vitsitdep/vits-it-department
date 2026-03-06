@@ -9,7 +9,7 @@ const Index = () => {
 
   //Events 
   const events = [
-    "Department Day: 7th February 2026","Alumni Meet: 7th February 2026"
+    "Vansh2k26: 2nd APril 2026","Farewell for 2026 passouts: March 2026"
   ];
 
   return (

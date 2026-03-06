@@ -29,15 +29,20 @@ const events: EventsData = {
         
         
          {
-            title: 'Alumni Meet',
-            date: '7th February 2026',
-            type: 'Meet',
-            participants: 'Alumni',
+            title: 'Farewell for 2026 passouts',
+            date: 'March 2026',
+            type: 'Department event',
+            participants: 'III & IV year students',
             organisedby: 'Department of IT',
         },
     ],
     past: [
-        
+         {
+            title: ' Attending Department-Day & Alumni Meet 2026',
+            date: '7th Febuary 2026 ',
+            description: 'Celebrating legacy, connection, and excellence.',
+            images: ['/IMG-20251231-WA0018.jpg'],
+        },
         {
             title: ' Attending FoundersFest 2025',
             date: '31st December 2025 ',
