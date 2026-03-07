@@ -140,14 +140,14 @@ const Index = () => {
                   <div>
                     <dt className="font-bold text-indigo-600">PSO1: Professional Skills</dt>
                     <dd className="text-gray-700">
-                      An ability to Analyze, Design and Develop appropriate IT solutions.
+                      Shall have expertise on the evolving technologies like Python, Machine Learning, Deep Learning, Internet of Things (IOT), Data Science, Full stack development, Cyber Security, Big Data, Mobile Apps etc.
                     </dd>
                   </div>
 
                   <div>
                     <dt className="font-bold text-indigo-600">PSO2: Problem-Solving Skills</dt>
                     <dd className="text-gray-700">
-                      Shall have expertise on the evolving technologies like Python, Machine Learning, Deep Learning, Internet of Things (IOT), Data Science, Full stack development, Cyber Security, Big Data, Mobile Apps etc.
+                      An ability to Analyze, Design and Develop appropriate IT solutions.
                     </dd>
                   </div>
 
