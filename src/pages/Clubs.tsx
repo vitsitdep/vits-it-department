@@ -178,13 +178,13 @@ const ngDsdcProjects: NgDsdcProject[] = [
     initialDevelopers: [
       { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
       { name: "K. Mohith", rollNumber: "23891A1231", club: "Coding Club" },
-      { name: "Md. Mudassir", rollNumber: "23891A1236", club: "Coding Club" },
+      { name: "Md. Mudassir", rollNumber: "23891A1236", club: "Speakeasy Club" },
       { name: "G.V. Harsha Ram", rollNumber: "24895A1222", club: "Coding Club" },
       { name: "S. Abhitej", rollNumber: "23891A1201", club: "Coding Club" },
     ],
     maintainedBy: [
       { name: "M. S. B. KASYAPA", role: "Assistant Professor, Dept. of IT" },
-      { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
+      { name: "G.V.Sri Harsha Ram", rollNumber: "23891A1222", club: "Coding Club" },
     ],
   },
   {
@@ -193,12 +193,12 @@ const ngDsdcProjects: NgDsdcProject[] = [
     initialDevelopers: [
       { name: "K. Mohith", rollNumber: "23891A1231", club: "InfyCoder Club" },
       { name: "S. Abhitej", rollNumber: "23891A1201", club: "InfyCoder Club" },
-      { name: "M. Mudassir", rollNumber: "23891A1236", club: "SpeakEasy Club" },
+      { name: "Md. Mudassir", rollNumber: "23891A1236", club: "SpeakEasy Club" },
       { name: "G.V.Sri Harsha Ram", rollNumber: "23891A1222", club: "SpeakEasy Club" },
     ],
     maintainedBy: [
-      { name: "Mohith Konduri", rollNumber: "23891A1231", club: "Coding Club" },
       {name: "Md Mudassir", rollNumber: "23891A1236", club: "Speakeasy Club" },
+      
     ], // no maintainers
   },
   {
@@ -215,7 +215,7 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ],
     maintainedBy: [
       { name: "Shaik Khaleelullah", role: "Assistant Professor, Dept. of IT" },
-      { name: "I. Venkatapathi Babu", rollNumber: "23891A1225", club: "NextGen Club" },
+      { name: "S. Abhitej", rollNumber: "23891A1201", club: "Coding Club" },
     ], // no maintainers
   },
 ];
