@@ -121,10 +121,10 @@ const Index = () => {
                   <h2 className="text-2xl font-semibold text-blue-700 mb-2">Mission</h2>
                   <ul className="list-disc pl-6 text-gray-700 text-lg space-y-2">
                     <li>
-                      Provide a holistic learning environment to students for professional development and ethical practices.
+                      To Provide a holistic learning environment to students for professional development and ethical practices.
                     </li>
                     <li>
-                      Train the students to be industry ready and to have multidisciplinary skills as an individual and as a team.
+                      To Train the students to be industry ready and to have multidisciplinary skills as an individual and as a team.
                     </li>
                     <li>
                       To impart skills beyond university prescribed to transform students into a well- rounded IT professional.
@@ -140,21 +140,21 @@ const Index = () => {
                   <div>
                     <dt className="font-bold text-indigo-600">PSO1: Professional Skills</dt>
                     <dd className="text-gray-700">
-                      Learn the basic concepts of Computer Science and Engineering and apply them to areas like Data Structures, Operating Systems, Computer Organization, Computer Networks, and Information Security in the design and implementation of complex systems.
+                      An ability to Analyze, Design and Develop appropriate IT solutions.
                     </dd>
                   </div>
 
                   <div>
                     <dt className="font-bold text-indigo-600">PSO2: Problem-Solving Skills</dt>
                     <dd className="text-gray-700">
-                      Provide solutions to complex Computer Science and Engineering problems using the latest hardware and software tools, along with analytical skills, to arrive at cost-effective and appropriate solutions.
+                      Shall have expertise on the evolving technologies like Python, Machine Learning, Deep Learning, Internet of Things (IOT), Data Science, Full stack development, Cyber Security, Big Data, Mobile Apps etc.
                     </dd>
                   </div>
 
                   <div>
                     <dt className="font-bold text-indigo-600">PSO3: Entrepreneurship Skills and Career Management</dt>
                     <dd className="text-gray-700">
-                      Demonstrate social awareness, environmental wisdom, and ethical responsibility to lead a successful career and sustain a passion for real-world applications using optimal resources as an entrepreneur.
+                      Understand software engineering practices and hardware integration for developing solutions to real world problems over multi-disciplinary domains
                     </dd>
                   </div>
                 </dl>
