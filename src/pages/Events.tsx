@@ -41,7 +41,7 @@ const events: EventsData = {
             title: ' Attending Department-Day & Alumni Meet 2026',
             date: '7th Febuary 2026 ',
             description: 'Celebrating legacy, connection, and excellence.',
-            images: ['/IMG-20251231-WA0018.jpg'],
+            images: ['/dept-day.jpeg'],
         },
         {
             title: ' Attending FoundersFest 2025',

@@ -140,7 +140,7 @@ const Index = () => {
                   <div>
                     <dt className="font-bold text-indigo-600">PSO1: Professional Skills</dt>
                     <dd className="text-gray-700">
-                      Shall have expertise on the evolving technologies like Python, Machine Learning, Deep Learning, Internet of Things (IOT), Data Science, Full stack development, Cyber Security, Big Data, Mobile Apps etc.
+                      
                     </dd>
                   </div>
 
