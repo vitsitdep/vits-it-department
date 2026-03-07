@@ -202,6 +202,19 @@ const ngDsdcProjects: NgDsdcProject[] = [
     ], // no maintainers
   },
   {
+    name: "Edison club",
+    description: "Edison club website for EEE Dept",
+    initialDevelopers: [
+      
+      { name: "Md. Mudassir", rollNumber: "23891A1236", club: "Speakeasy Club" },
+      
+    ],
+    maintainedBy: [
+      {name: "Md Mudassir", rollNumber: "23891A1236", club: "Speakeasy Club" },
+      
+    ],
+  },
+  {
     name: "VAAIT: Vignan Alumni Association for IT Portal",
     description: "Portal for Alumni connect.",
     initialDevelopers: [
