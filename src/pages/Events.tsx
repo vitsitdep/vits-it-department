@@ -38,7 +38,7 @@ const events: EventsData = {
     ],
     past: [
          {
-            title: ' Attending Department-Day & Alumni Meet 2026',
+            title: ' Department-Day & Alumni Meet 2026',
             date: '7th Febuary 2026 ',
             description: 'Celebrating legacy, connection, and excellence.',
             images: ['/dept-day.jpeg'],
