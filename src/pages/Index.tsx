@@ -16,15 +16,14 @@ const Index = () => {
 
 const events: EventItem[] = [
   {
-    text: "Vansh2k26: 2nd April 2026",
-    link: "/events/vansh2k26",
+    text: "2026-27 Academic Year II, III, IV Students Class work Comense from 06-07-2026",
+    link: "https://drive.google.com/file/d/1CFpyDJLZJ1LsSCYXvdKssYWoTHjyq1_D/view?usp=sharing",
   },
   {
-    text: "Farewell for 2026 passouts: March 2026",
-    link: "/events/farewell",
+    text: "CRT Classes for IV Years is scheduled in JUNE",
   },
   {
-    text: "Guest Lecture: May 2026",
+    text: "CRT Classes for III Years is scheduled in JULY",
   },
 ];
 
@@ -37,7 +36,7 @@ const events: EventItem[] = [
         <div className="flex animate-marquee whitespace-nowrap">
           
           <span className="md:px-16 text-purple-600 font-bold flex-shrink-0">
-            Upcoming Events :
+            Notice to Students :
           </span>
 
           {[...events, ...events].map((event, idx) => (
