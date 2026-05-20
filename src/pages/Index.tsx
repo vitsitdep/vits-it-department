@@ -60,7 +60,7 @@ const Index = () => {
               📢{" "}
               {event.link ? (
                 <Link
-                  href={event.link}
+                  to={event.link}
                   target="_blank"
                   className="hover:text-red-600 underline"
                 >
