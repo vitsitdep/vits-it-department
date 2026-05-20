@@ -3,28 +3,67 @@ import Layout from '../components/Layout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import Link from "next/link";
 
 const Index = () => {
   const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
 
   //Events 
-  const events = [
-    "Vansh2k26: 2nd APril 2026","Farewell for 2026 passouts: March 2026"
-  ];
+  type EventItem = {
+  text: string;
+  link?: string;
+};
 
+const events: EventItem[] = [
+  {
+    text: "Vansh2k26: 2nd April 2026",
+    link: "/events/vansh2k26",
+  },
+  {
+    text: "Farewell for 2026 passouts: March 2026",
+    link: "/events/farewell",
+  },
+  {
+    text: "Guest Lecture: May 2026",
+  },
+];
+
+ export default function Home() {
   return (
     <Layout>
       {/* Marquee Events Section */}
-      
       <div className="bg-blue border-y-2 border-yellow-400 py-2 overflow-hidden relative">
-        <div className="flex animate-marquee whitespace-nowrap"> <span className="md:px-16 text-purple-600 font-bold">Upcoming Events : </span>
+        
+        <div className="flex animate-marquee whitespace-nowrap">
+          
+          <span className="md:px-16 text-purple-600 font-bold flex-shrink-0">
+            Upcoming Events :
+          </span>
+
           {[...events, ...events].map((event, idx) => (
-            <span key={idx} className="text-yellow-800 font-semibold mx-4 flex-shrink-0">
-              📢 {event}
+            <span
+              key={idx}
+              className="text-yellow-800 font-semibold mx-4 flex-shrink-0"
+            >
+              📢{" "}
+              {event.link ? (
+                <Link
+                  href={event.link}
+                  className="hover:text-red-600 underline"
+                >
+                  {event.text}
+                </Link>
+              ) : (
+                event.text
+              )}
             </span>
           ))}
         </div>
+
       </div>
+    </Layout>
+  );
+}
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-department-purple/10 to-department-blue/10 md:py-12 transform-gpu will-change-auto">
