@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+import React, { useState } from "react";
+import Layout from "../components/Layout";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const Index = () => {
-  const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
-
-  //Events 
-  type EventItem = {
+type EventItem = {
   text: string;
   link?: string;
 };
 
 const events: EventItem[] = [
   {
-    text: "2026-27 Academic Year II, III, IV Students Class work Comense from 06-07-2026",
+    text: "2026-27 Academic Year II, III, IV Students Class work Commence from 06-07-2026",
     link: "https://drive.google.com/file/d/1CFpyDJLZJ1LsSCYXvdKssYWoTHjyq1_D/view?usp=sharing",
   },
   {
@@ -27,14 +23,16 @@ const events: EventItem[] = [
   },
 ];
 
- export default function Home() {
+const Index = () => {
+  const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
+
   return (
     <Layout>
-      {/* Marquee Events Section */}
+
+      {/* Marquee */}
       <div className="bg-blue border-y-2 border-yellow-400 py-2 overflow-hidden relative">
-        
         <div className="flex animate-marquee whitespace-nowrap">
-          
+
           <span className="md:px-16 text-purple-600 font-bold flex-shrink-0">
             Notice to Students :
           </span>
@@ -48,6 +46,7 @@ const events: EventItem[] = [
               {event.link ? (
                 <Link
                   href={event.link}
+                  target="_blank"
                   className="hover:text-red-600 underline"
                 >
                   {event.text}
@@ -57,13 +56,11 @@ const events: EventItem[] = [
               )}
             </span>
           ))}
+
         </div>
-
       </div>
-    </Layout>
-  );
-}
 
+      {/* Hero Section starts here */}
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-department-purple/10 to-department-blue/10 md:py-12 transform-gpu will-change-auto">
           
