@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import {
   Tabs,
@@ -40,8 +40,24 @@ const events: EventItem[] = [
 const Index = () => {
   const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
 
+  const placementImages = [
+    "/Placements/pi.png",
+    "/Placements/pi2.png",
+    "/Placements/pi3.png",
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % placementImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Layout>
+      <Layout>
 
       {/* Marquee Events */}
       <div className="bg-blue border-y-2 border-yellow-400 py-2 overflow-hidden relative">
@@ -113,11 +129,28 @@ const Index = () => {
               <h3 className="text-4xl md:text-3xl font-bold text-department-purple leading-tight transform-gpu will-change-auto text-center">
                 Placement Insights
               </h3>
-              <img 
-                src="/pi.png" 
-                alt="IT Department" 
-                className="rounded-lg shadow-2xl w-full h-auto transform-gpu will-change-auto"
-              />
+              <div className="relative w-full">
+                <img
+                    src={placementImages[currentImage]}
+                    alt="Placement Insights"
+                    className="rounded-lg shadow-2xl w-full h-[350px] object-cover transition-all duration-700"
+                />
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center mt-4 space-x-2">
+                  {placementImages.map((_, index) => (
+                      <button
+                          key={index}
+                          onClick={() => setCurrentImage(index)}
+                          className={`h-3 w-3 rounded-full ${
+                              currentImage === index
+                                  ? "bg-department-purple"
+                                  : "bg-gray-300"
+                          }`}
+                      />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
