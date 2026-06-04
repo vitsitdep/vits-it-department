@@ -42,8 +42,8 @@ const Index = () => {
 
   const placementImages = [
     "/Placements/pi.png",
-    "/Placements/pi2.png",
-    "/Placements/pi3.png",
+    "/Placements/S1.png",
+    "/Placements/s2.png",
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
